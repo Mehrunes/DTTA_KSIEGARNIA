@@ -13,7 +13,8 @@ var libs = [
     paths.npm + 'systemjs/dist/system.src.js',
     paths.npm + 'es6-shim/es6-shim.js',
     paths.npm + 'rxjs/bundles/Rx.js',
-    paths.npm + 'angular2/bundles/angular2.dev.js'
+    paths.npm + 'angular2/bundles/angular2.dev.js',     
+    paths.npm + 'angular2/bundles/http.dev.js'
 ];
 
 gulp.task('rxjs', function () {

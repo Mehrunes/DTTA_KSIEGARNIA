@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AngualrServer.Model;
 using Microsoft.AspNet.Mvc;
 
 namespace AngualrServer.Controllers
@@ -11,9 +9,24 @@ namespace AngualrServer.Controllers
     {
         // GET: api/books
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Book> Get()
         {
-            return new string[] { "value1", "value2" };
+
+            return new List<Book>
+            {
+                new Book
+                {
+                    Id = 1,
+                    Title = "Pan tadeusz",
+                    Author = "Adam Mickiewicz"
+                },
+                new Book
+                {
+                    Id = 2,
+                    Title = "krzyzacy",
+                    Author = "Henryk Sienkiewicz"
+                }
+            };
         }
     }
 }
