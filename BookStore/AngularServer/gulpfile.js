@@ -8,6 +8,7 @@ var paths = {
     lib: './wwwroot/lib/'
 };
 
+
 var libs = [
     paths.npm + 'angular2/bundles/angular2.dev.js',
     paths.npm + 'angular2/bundles/http.dev.js',
