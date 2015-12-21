@@ -1,0 +1,43 @@
+﻿<html>
+
+<head>
+    <title>Angular 2 dsdfsdfsdf</title>
+
+    <!-- 1. Load libraries -->
+<!--    <script src="lib/system-polyfills.js"></script>-->
+<!--    <script src="lib/system.js"></script>-->
+<!--    <script src="lib/rxjs/bundles/Rx.js"></script>-->
+    <!-- <script src="lib/angular2.dev.js"></script>-->
+<!--    <script src="node_modules/angular2/bundles/http.dev.js"></script>-->
+
+    <script src="lib/angular2-polyfills.js"></script>
+    <script src="lib/system.src.js"></script>
+    <script src="lib/Rx.js"></script>
+    <script src="lib/angular2.dev.js"></script>
+    <script src="lib/http.dev.js"></script>
+
+
+
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<!-- 3. Display the application -->
+<body>
+    <my-app>Loading...</my-app>
+</body>
+
+</html>
