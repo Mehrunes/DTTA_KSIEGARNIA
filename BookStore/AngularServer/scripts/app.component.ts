@@ -20,6 +20,8 @@ export class AppComponent {
 
     getData(): any {
         this.http.get('http://localhost:49989/api/Books')
+            //../mock/Books.json
+            //http://localhost:3000/wwwroot/index.html
             .map(res=> (<Response>res).json())
             .map((shipments: Array<any>) => {
                 let result: Array<Book> = [];
