@@ -1,14 +1,34 @@
 ﻿import {Component} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Book}from './model';
+import {UserListComponent}     from './users/user-list.component';
+import {UserDetailComponent}   from './users/user-detail.component';
+import {BorrowComponent} from "./book-center/borrow/borrow.component";
+import {SzukajComponent} from "./book-center/books-center.component";
 @Component({
     selector: 'my-app',
-//    viewProviders: [HTTP_PROVIDERS],
     templateUrl: 'partials/app.html',
-
+    directives: [ROUTER_DIRECTIVES]
 })
+@RouteConfig([
 
+    { // Book Center child route
+        path: '/admin/...',
+        name: 'Szukaj',
+        component: SzukajComponent,
+        useAsDefault: true
+    },
+    { // Book Center child route
+        path: '/books/...',
+        name: 'Borrow',
+        component: BorrowComponent
+    },
+    {path: '/users', name: 'Users', component: UserListComponent},
+    {path: '/hero/:id', name: 'HeroDetail', component: UserDetailComponent},
+
+])
 export class AppComponent {
 
     public books: Book[];
@@ -19,7 +39,7 @@ export class AppComponent {
     }
 
     getData(): any {
-        this.http.get('http://localhost:49989/api/Books')
+        this.http.get('../mock/Books.json')
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
