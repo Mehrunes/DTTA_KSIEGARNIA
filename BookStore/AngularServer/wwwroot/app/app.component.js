@@ -17,8 +17,9 @@ var user_detail_component_1 = require('./users/user-detail.component');
 var borrow_component_1 = require("./book-center/borrow/borrow.component");
 var books_center_component_1 = require("./book-center/books-center.component");
 var AppComponent = (function () {
-    function AppComponent(http) {
+    function AppComponent(http, location) {
         this.http = http;
+        location.go('/');
         this.books = this.getData();
     }
     AppComponent.prototype.getData = function () {
@@ -58,7 +59,7 @@ var AppComponent = (function () {
             { path: '/users', name: 'Users', component: user_list_component_1.UserListComponent },
             { path: '/user/:id', name: 'UserDetail', component: user_detail_component_1.UserDetailComponent },
         ]), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, router_1.Location])
     ], AppComponent);
     return AppComponent;
 })();

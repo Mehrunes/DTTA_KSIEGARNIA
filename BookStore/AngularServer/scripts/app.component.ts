@@ -1,5 +1,5 @@
 ﻿import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES,  Location} from 'angular2/router';
 import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Book}from './book-center/books.service';
@@ -31,14 +31,15 @@ import {SzukajComponent} from "./book-center/books-center.component";
 ])
 export class AppComponent {
 
-    public books: Book[];
+    public books:Book[];
 
-    constructor(public http: Http) {
 
+    constructor(public http:Http, location:Location) {
+        location.go('/');
         this.books = this.getData();
     }
 
-    getData(): any {
+    getData():any {
         this.http.get('http://localhost:49989/api/Books')
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
