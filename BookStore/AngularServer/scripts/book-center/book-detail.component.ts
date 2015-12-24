@@ -44,7 +44,7 @@ export class BookDetailComponent implements OnInit {
     let id = +this._routeParams.get('id');
     this._service.getBook(id).then(book => {
       if (book) {
-        this.editName = book.name;
+        this.editName = book.title;
         this.book = book;
       } else { // id not found
         this.gotoBooks();
@@ -53,12 +53,12 @@ export class BookDetailComponent implements OnInit {
   }
 
   cancel() {
-    this.editName = this.book.name;
+    this.editName = this.book.title;
     this.gotoBooks();
   }
 
   save() {
-    this.book.name = this.editName;
+    this.book.title = this.editName;
     this.gotoBooks();
   }
 

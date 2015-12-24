@@ -1,10 +1,7 @@
-Witamy w Bibilotece
-proszę wybrać czy szukasz po autorze czy tytule
-
 <h1 class="title">Witamy na stronie biblioteki</h1>
-<a [routerLink]="['Users']">Zarzadzaj użytkownikiem</a>
 <a [routerLink]="['Szukaj']">Zarzadzaj ksiazkami (admin) </a>
 <a [routerLink]="['Borrow']">>Wyszukaj Ksiazkę i wyporzycz</a>
+<a [routerLink]="['Users']">Zarzadzaj użytkownikiem</a>
 <router-outlet></router-outlet>
 <li *ngFor="#book of books">
 

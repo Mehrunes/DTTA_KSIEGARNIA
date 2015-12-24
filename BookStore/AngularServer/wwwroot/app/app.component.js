@@ -11,7 +11,7 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
-var model_1 = require('./model');
+var books_service_1 = require('./book-center/books.service');
 var user_list_component_1 = require('./users/user-list.component');
 var user_detail_component_1 = require('./users/user-detail.component');
 var borrow_component_1 = require("./book-center/borrow/borrow.component");
@@ -23,13 +23,13 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.getData = function () {
         var _this = this;
-        this.http.get('../mock/Books.json')
+        this.http.get('http://localhost:49989/api/Books')
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];
             if (jbooks) {
                 jbooks.forEach(function (jbook) {
-                    result.push(new model_1.Book(jbook.id, jbook.title, jbook.author));
+                    result.push(new books_service_1.Book(jbook.id, jbook.title, jbook.author));
                 });
             }
             return result;
@@ -45,7 +45,7 @@ var AppComponent = (function () {
         }),
         router_1.RouteConfig([
             {
-                path: '/admin/...',
+                path: '/...',
                 name: 'Szukaj',
                 component: books_center_component_1.SzukajComponent,
                 useAsDefault: true
@@ -56,7 +56,7 @@ var AppComponent = (function () {
                 component: borrow_component_1.BorrowComponent
             },
             { path: '/users', name: 'Users', component: user_list_component_1.UserListComponent },
-            { path: '/hero/:id', name: 'HeroDetail', component: user_detail_component_1.UserDetailComponent },
+            { path: '/user/:id', name: 'UserDetail', component: user_detail_component_1.UserDetailComponent },
         ]), 
         __metadata('design:paramtypes', [http_1.Http])
     ], AppComponent);

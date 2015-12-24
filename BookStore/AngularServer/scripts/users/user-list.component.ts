@@ -16,7 +16,7 @@ import {Router}              from 'angular2/router';
 })
 export class UserListComponent implements OnInit {
     public users:User[];
-    public selectedHero:User;
+
 
     constructor(private _router:Router,
                 private _service:UserService) {
@@ -27,6 +27,6 @@ export class UserListComponent implements OnInit {
     }
 
     onSelect(user:User) {
-        this._router.navigate(['HeroDetail', {id: user.id}]);
+        this._router.navigate(['UserDetail', {id: user.id}]);
     }
 }

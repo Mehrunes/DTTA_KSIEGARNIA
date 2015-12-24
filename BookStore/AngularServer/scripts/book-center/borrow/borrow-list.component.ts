@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Book, BooksService} from './../books.service';
+import {Book,BooksService} from './../books.service';
 import {Router, RouteParams} from 'angular2/router';
 
 @Component({
@@ -8,7 +8,7 @@ import {Router, RouteParams} from 'angular2/router';
       <li *ngFor="#book of books"
         [class.selected]="isSelected(book)"
         (click)="onSelect(book)">
-        <span class="badge">{{book.id}}</span> {{book.name}}
+        <span class="badge">{{book.id}}</span> {{book.title}}
       </li>
     </ul>
   `,

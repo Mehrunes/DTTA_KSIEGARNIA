@@ -21,7 +21,7 @@ var BookDetailComponent = (function () {
         var id = +this._routeParams.get('id');
         this._service.getBook(id).then(function (book) {
             if (book) {
-                _this.editName = book.name;
+                _this.editName = book.title;
                 _this.book = book;
             }
             else {
@@ -30,11 +30,11 @@ var BookDetailComponent = (function () {
         });
     };
     BookDetailComponent.prototype.cancel = function () {
-        this.editName = this.book.name;
+        this.editName = this.book.title;
         this.gotoBooks();
     };
     BookDetailComponent.prototype.save = function () {
-        this.book.name = this.editName;
+        this.book.title = this.editName;
         this.gotoBooks();
     };
     BookDetailComponent.prototype.gotoBooks = function () {

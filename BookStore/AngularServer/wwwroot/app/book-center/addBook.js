@@ -11,26 +11,20 @@ var core_1 = require('angular2/core');
 var books_service_1 = require('./books.service');
 var router_1 = require('angular2/router');
 var AddBook = (function () {
-    //book:Book = new Book();
-    function AddBook(_service, _router, book) {
-        if (book === void 0) { book = new books_service_1.Book(1, ""); }
+    function AddBook(_service, _router) {
         this._service = _service;
         this._router = _router;
-        this.book = book;
     }
-    AddBook.prototype.ngOnInit = function () {
-        //this._service.getBooks().then(users => this.users = users);
-    };
     AddBook.prototype.onSubmit = function () {
-        this._service.addBook(this.book.name);
+        this._service.addBook(this.title, this.author);
         this._router.navigate(['SzukajComponent']);
     };
     AddBook = __decorate([
         core_1.Component({
             providers: [books_service_1.BooksService],
-            template: "\n<form (ngSubmit)=\"onSubmit()\">\n    <input type=\"text\" [(ngModel)]=\"book.name\">{{book.name}}\n    <button type=\"submit\" >addd</button>\n</form>\n"
+            template: "\n<form (ngSubmit)=\"onSubmit()\">\n    <input type=\"text\" [(ngModel)]=\"title\">{{title}}\n    <input type=\"text\" [(ngModel)]=\"author\">{{author}}\n    <button type=\"submit\" >addd</button>\n</form>\n"
         }), 
-        __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, books_service_1.Book])
+        __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router])
     ], AddBook);
     return AddBook;
 })();

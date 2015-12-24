@@ -9,9 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var Book = (function () {
-    function Book(id, name) {
+    function Book(id, title, author) {
         this.id = id;
-        this.name = name;
+        this.title = title;
+        this.author = author;
     }
     return Book;
 })();
@@ -26,16 +27,17 @@ var BooksService = (function () {
         return crisesPromise
             .then(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
     };
-    BooksService.prototype.addBook = function (name) {
-        name = name.trim();
-        if (name) {
+    BooksService.prototype.addBook = function (title, author) {
+        title = title.trim();
+        author = author.trim();
+        if (title) {
             crisesPromise.then(function (crises) {
-                var book = new Book(crises.length + 1, name);
+                var book = new Book(crises.length + 1, title, author);
                 crises.push(book);
             });
         }
     };
-    BooksService.nextCrisisId = 100;
+    BooksService.nextCrisisId = 100; //after post new book, set this value
     BooksService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
@@ -44,9 +46,9 @@ var BooksService = (function () {
 })();
 exports.BooksService = BooksService;
 var books = [
-    new Book(1, 'Princess Held Captive'),
-    new Book(2, 'Dragon Burning Cities'),
-    new Book(3, 'Giant Asteroid Heading For Earth'),
-    new Book(4, 'Release Deadline Looms')
+    new Book(1, 'Princess Held Captive', ""),
+    new Book(2, 'Dragon Burning Cities', ""),
+    new Book(3, 'Giant Asteroid Heading, For Earth', ""),
+    new Book(4, 'Release Deadline Looms', "")
 ];
 var crisesPromise = Promise.resolve(books);

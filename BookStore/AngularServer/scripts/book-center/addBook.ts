@@ -1,5 +1,5 @@
 import {Component, OnInit,Inject} from 'angular2/core';
-import {Book, BooksService} from './books.service';
+import { BooksService} from './books.service';
 import {RouteParams, Router} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
 
@@ -7,29 +7,23 @@ import {CanDeactivate, ComponentInstruction} from 'angular2/router';
     providers: [BooksService],
     template: `
 <form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="book.name">{{book.name}}
+    <input type="text" [(ngModel)]="title">{{title}}
+    <input type="text" [(ngModel)]="author">{{author}}
     <button type="submit" >addd</button>
 </form>
 `
 })
-export class AddBook implements OnInit {
+export class AddBook {
 
-
-    //book:Book = new Book();
+    private title;
+    private author;
 
     constructor(private _service:BooksService,
-                private _router:Router,
-                private  book:Book=new Book(1,"")
-    ) {
-
-    }
-
-    ngOnInit() {
-        //this._service.getBooks().then(users => this.users = users);
+                private _router:Router) {
     }
 
     onSubmit() {
-        this._service.addBook(this.book.name);
+        this._service.addBook(this.title, this.author);
         this._router.navigate(['SzukajComponent']);
     }
 }

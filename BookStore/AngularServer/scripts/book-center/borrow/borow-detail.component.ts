@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {Book, BooksService} from './../books.service';
+import {BooksService,Book} from './../books.service';
 import {RouteParams, Router} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
 
@@ -11,7 +11,7 @@ import {CanDeactivate, ComponentInstruction} from 'angular2/router';
       <label>Id: </label>{{book.id}}</div>
     <div>
       <label>Name: </label>
-      {{book.name}}
+      {{book.title}}
     </div>
  <button (click)="gotoBooks()">Canclel</button>
     <br><br><br>
@@ -36,7 +36,7 @@ export class BorrowDetailComponent implements OnInit {
         let id = +this._routeParams.get('id');
         this._service.getBook(id).then(book => {
             if (book) {
-                this.editName = book.name;
+                this.editName = book.title;
                 this.book = book;
             } else { // id not found
                 this.gotoBooks();

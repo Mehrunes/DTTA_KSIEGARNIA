@@ -20,7 +20,7 @@ var UserListComponent = (function () {
         this._service.getUsers().then(function (users) { return _this.users = users; });
     };
     UserListComponent.prototype.onSelect = function (user) {
-        this._router.navigate(['HeroDetail', { id: user.id }]);
+        this._router.navigate(['UserDetail', { id: user.id }]);
     };
     UserListComponent = __decorate([
         core_1.Component({
