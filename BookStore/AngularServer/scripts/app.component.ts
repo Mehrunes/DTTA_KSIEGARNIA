@@ -22,16 +22,17 @@ export class AppComponent {
         this.http.get('http://localhost:49989/api/Books')
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
+            //http://localhost:49989/api/Books
             .map(res=> (<Response>res).json())
-            .map((shipments: Array<any>) => {
+            .map((jbooks: Array<any>) => {
                 let result: Array<Book> = [];
-                if (shipments) {
-                    shipments.forEach(shipment=> {
+                if (jbooks) {
+                    jbooks.forEach(jbook=> {
                         result.push(
                             new Book(
-                                shipment.id,
-                                shipment.title,
-                                shipment.author
+                                jbook.id,
+                                jbook.title,
+                                jbook.author
                             )
                         )
                     })
@@ -40,7 +41,7 @@ export class AppComponent {
             }).subscribe(
             data=> {
                 this.books = data;
-                console.log(data);
+
             },
             err => console.log(err)
             )

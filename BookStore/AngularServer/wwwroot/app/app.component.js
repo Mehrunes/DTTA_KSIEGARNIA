@@ -20,17 +20,16 @@ var AppComponent = (function () {
         var _this = this;
         this.http.get('http://localhost:49989/api/Books')
             .map(function (res) { return res.json(); })
-            .map(function (shipments) {
+            .map(function (jbooks) {
             var result = [];
-            if (shipments) {
-                shipments.forEach(function (shipment) {
-                    result.push(new model_1.Book(shipment.id, shipment.title, shipment.author));
+            if (jbooks) {
+                jbooks.forEach(function (jbook) {
+                    result.push(new model_1.Book(jbook.id, jbook.title, jbook.author));
                 });
             }
             return result;
         }).subscribe(function (data) {
             _this.books = data;
-            console.log(data);
         }, function (err) { return console.log(err); });
     };
     AppComponent = __decorate([
