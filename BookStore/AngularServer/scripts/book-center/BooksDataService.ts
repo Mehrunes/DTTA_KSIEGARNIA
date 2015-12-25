@@ -1,19 +1,11 @@
 import {Injectable} from 'angular2/core';
 import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
 import {Observable} from "rxjs/Observable";
-
-export class Book {
-
-    constructor(public id:number,
-                public title:string,
-                public author:string) {
-    }
-}
-
+import {Book} from "../model/book";
 @Injectable()
 export class BooksDataService {
 
-    public books:Book[];
+    static books:Promise<any>;
     public Obooks;
 
     constructor(public http:Http) {
@@ -32,8 +24,7 @@ export class BooksDataService {
                                 jbook.id,
                                 jbook.title,
                                 jbook.author
-                            )
-                        )
+                            ))
                     })
                 }
                 return result;
@@ -41,25 +32,14 @@ export class BooksDataService {
     }
 
     getBooks() {
-         this.Obooks.subscribe(
+        this.Obooks.subscribe(
             function (books) {
-
-                //let book = new Book(books.length + 1, "sads", "asasd");
-                //books.push(book);
-
-
-                this.books=books;
-
+                BooksDataService.books = Promise.resolve(books);
             }
         );
-
         return this.Obooks;
     }
-
-    pushBooks() {
-
-
-    }
 }
+
 
 

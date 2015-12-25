@@ -1,8 +1,10 @@
 
 import {Component, OnInit} from 'angular2/core';
-import {Book, BooksService} from './books.service';
+import { BooksService} from './books.service';
 import {RouteParams, Router} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
+import {BooksDataService} from "./BooksDataService";
+import {Book} from "../model/book";
 
 
 @Component({
@@ -42,7 +44,8 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit() {
     let id = +this._routeParams.get('id');
-    this._service.getBook(id).subscribe(book => {
+    this._service.getBook(id).then(book => {
+
       if (book) {
         this.editName = book.title;
         this.book = book;
@@ -59,6 +62,7 @@ export class BookDetailComponent implements OnInit {
 
   save() {
     this.book.title = this.editName;
+    console.log('Save to API new Book');
     this.gotoBooks();
   }
 

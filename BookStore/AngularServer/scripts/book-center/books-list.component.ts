@@ -1,7 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
-import {Book,BooksService} from './books.service';
+import {BooksService} from './books.service';
 
 import {Router, RouteParams} from 'angular2/router';
+import {Book} from "../model/book";
 
 @Component({
     template: `

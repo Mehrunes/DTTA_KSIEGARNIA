@@ -19,7 +19,7 @@ var BookDetailComponent = (function () {
     BookDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id = +this._routeParams.get('id');
-        this._service.getBook(id).subscribe(function (book) {
+        this._service.getBook(id).then(function (book) {
             if (book) {
                 _this.editName = book.title;
                 _this.book = book;
@@ -35,6 +35,7 @@ var BookDetailComponent = (function () {
     };
     BookDetailComponent.prototype.save = function () {
         this.book.title = this.editName;
+        console.log('Save to API new Book');
         this.gotoBooks();
     };
     BookDetailComponent.prototype.gotoBooks = function () {

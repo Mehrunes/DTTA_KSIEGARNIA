@@ -10,15 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var core_2 = require("angular2/core");
 var BooksDataService_1 = require("./BooksDataService");
-var Book = (function () {
-    function Book(id, title, author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
-    return Book;
-})();
-exports.Book = Book;
+var book_1 = require("../model/book");
 var BooksService = (function () {
     function BooksService(_service) {
         this._service = _service;
@@ -27,15 +19,15 @@ var BooksService = (function () {
         return this._service.getBooks();
     };
     BooksService.prototype.getBook = function (id) {
-        return this._service.getBooks()
-            .subscribe(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
+        return BooksDataService_1.BooksDataService.books
+            .then(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
     };
     BooksService.prototype.addBook = function (title, author) {
         title = title.trim();
         author = author.trim();
         if (title) {
             this._service.getBooks().subscribe(function (crises) {
-                var book = new Book(crises.length + 1, title, author);
+                var book = new book_1.Book(crises.length + 1, title, author);
                 crises.push(book);
             });
         }

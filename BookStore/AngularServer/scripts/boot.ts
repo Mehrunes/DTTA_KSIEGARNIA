@@ -10,7 +10,4 @@ bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     UserService,
     provide(LocationStrategy, {useClass: HashLocationStrategy})
-]).then(
-    success => console.log('App Bootstrapped!'),
-    error => console.log(error)
-);
+]);

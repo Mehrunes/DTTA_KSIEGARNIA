@@ -1,14 +1,7 @@
 import {Injectable} from 'angular2/core';
 import {Component} from "angular2/core";
 import {BooksDataService} from "./BooksDataService";
-
-export class Book {
-
-    constructor(public id:number,
-                public title:string,
-                public author:string) {
-    }
-}
+import {Book} from "../model/book";
 @Component({
     providers: [BooksDataService]
 })
@@ -23,8 +16,8 @@ export class BooksService {
     }
 
     getBook(id:number | string) {
-        return this._service.getBooks()
-            .subscribe(crises => crises.filter(c => c.id === +id)[0]);
+        return  BooksDataService.books
+            .then(crises => crises.filter(c => c.id === +id)[0]);
     }
 
     static nextCrisisId = 100; //after post new book, set this value
@@ -43,7 +36,5 @@ export class BooksService {
             );
         }
     }
-
-
 }
 

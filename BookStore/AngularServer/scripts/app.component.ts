@@ -2,7 +2,7 @@
 import {RouteConfig, ROUTER_DIRECTIVES,  Location} from 'angular2/router';
 import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
-import {Book}from './book-center/books.service';
+import {Book}from './model/book';
 import {UserListComponent}     from './users/user-list.component';
 import {UserDetailComponent}   from './users/user-detail.component';
 import {BorrowComponent} from "./book-center/borrow/borrow.component";

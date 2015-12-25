@@ -9,15 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
-var Book = (function () {
-    function Book(id, title, author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
-    return Book;
-})();
-exports.Book = Book;
+var book_1 = require("../model/book");
 var BooksDataService = (function () {
     function BooksDataService(http) {
         this.http = http;
@@ -27,7 +19,7 @@ var BooksDataService = (function () {
             var result = [];
             if (jbooks) {
                 jbooks.forEach(function (jbook) {
-                    result.push(new Book(jbook.id, jbook.title, jbook.author));
+                    result.push(new book_1.Book(jbook.id, jbook.title, jbook.author));
                 });
             }
             return result;
@@ -35,13 +27,9 @@ var BooksDataService = (function () {
     }
     BooksDataService.prototype.getBooks = function () {
         this.Obooks.subscribe(function (books) {
-            //let book = new Book(books.length + 1, "sads", "asasd");
-            //books.push(book);
-            this.books = books;
+            BooksDataService.books = Promise.resolve(books);
         });
         return this.Obooks;
-    };
-    BooksDataService.prototype.pushBooks = function () {
     };
     BooksDataService = __decorate([
         core_1.Injectable(), 

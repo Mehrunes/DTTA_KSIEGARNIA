@@ -1,7 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
-import {BooksService,Book} from './../books.service';
+import {BooksService} from './../books.service';
 import {RouteParams, Router} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
+import {Book} from "../../model/book";
 
 
 @Component({
@@ -34,7 +35,7 @@ export class BorrowDetailComponent implements OnInit {
 
     ngOnInit() {
         let id = +this._routeParams.get('id');
-        this._service.getBook(id).subscribe(book => {
+        this._service.getBook(id).then(book => {
             if (book) {
                 this.editName = book.title;
                 this.book = book;

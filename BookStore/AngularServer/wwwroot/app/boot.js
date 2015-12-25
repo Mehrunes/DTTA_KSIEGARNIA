@@ -9,4 +9,4 @@ browser_1.bootstrap(app_component_1.AppComponent, [
     http_1.HTTP_PROVIDERS,
     user_service_1.UserService,
     core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
-]).then(function (success) { return console.log('App Bootstrapped!'); }, function (error) { return console.log(error); });
+]);
