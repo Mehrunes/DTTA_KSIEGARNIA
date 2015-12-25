@@ -25,13 +25,13 @@ namespace AngularServer.Model
                     new Book
                     {
                     
-                        Title = "Pan tadeusz",
+                        Title = "Pan Tadeusz",
                         Author = "Adam Mickiewicz"
                     },
                     new Book
                     {
                       
-                        Title = "krzyzacy",
+                        Title = "Krzyzacy",
                         Author = "Henryk Sienkiewicz"
                     }
                 };
