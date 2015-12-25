@@ -3,7 +3,3 @@
 <a [routerLink]="['Borrow']">>Wyszukaj Ksiazkę i wyporzycz</a>
 <a [routerLink]="['Users']">Zarzadzaj użytkownikiem</a>
 <router-outlet></router-outlet>
-<li *ngFor="#book of books">
-
-    <span class="badge">{{book.id}}</span> {{book.title}} {{book.author}}
-</li>

@@ -5,6 +5,7 @@ import {BooksListComponent}   from './books-list.component';
 import {BookDetailComponent} from './book-detail.component';
 import {BooksService}         from './books.service';
 import {AddBook}from './addBook'
+import {BooksDataService} from "./BooksDataService";
 @Component({
     template: `
     <h2>Lista Ksiazek</h2>
@@ -14,7 +15,7 @@ import {AddBook}from './addBook'
 
   `,
     directives: [RouterOutlet, ROUTER_DIRECTIVES],
-    providers: [BooksService]
+    providers: [BooksService, BooksDataService]
 })
 @RouteConfig([
     {path: '/', name: 'SzukajComponent', component: BooksListComponent, useAsDefault: true},

@@ -18,7 +18,7 @@ var BorrowListComponent = (function () {
     }
     BorrowListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._service.getBooks().then(function (books) { return _this.books = books; });
+        this._service.getBooks().subscribe(function (books) { return _this.books = books; });
     };
     BorrowListComponent.prototype.isSelected = function (book) {
         return book.id === this._selectedId;

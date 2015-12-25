@@ -34,7 +34,7 @@ export class BorrowDetailComponent implements OnInit {
 
     ngOnInit() {
         let id = +this._routeParams.get('id');
-        this._service.getBook(id).then(book => {
+        this._service.getBook(id).subscribe(book => {
             if (book) {
                 this.editName = book.title;
                 this.book = book;

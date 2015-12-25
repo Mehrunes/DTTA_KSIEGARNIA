@@ -12,6 +12,7 @@ var router_1 = require('angular2/router');
 var books_service_1 = require('./../books.service');
 var borrow_list_component_1 = require("./borrow-list.component");
 var borow_detail_component_1 = require("./borow-detail.component");
+var BooksDataService_1 = require("../BooksDataService");
 var BorrowComponent = (function () {
     function BorrowComponent() {
     }
@@ -19,7 +20,7 @@ var BorrowComponent = (function () {
         core_1.Component({
             template: "\n    <h2>Lista Ksiazek</h2>\n\n    <router-outlet></router-outlet>\n\n\n  ",
             directives: [router_1.RouterOutlet, router_1.ROUTER_DIRECTIVES],
-            providers: [books_service_1.BooksService]
+            providers: [books_service_1.BooksService, BooksDataService_1.BooksDataService]
         }),
         router_1.RouteConfig([
             { path: '/', name: 'BorrowComponent', component: borrow_list_component_1.BorrowListComponent, useAsDefault: true },

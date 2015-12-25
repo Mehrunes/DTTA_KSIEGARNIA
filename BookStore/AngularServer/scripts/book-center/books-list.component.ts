@@ -9,7 +9,7 @@ import {Router, RouteParams} from 'angular2/router';
       <li *ngFor="#book of books"
         [class.selected]="isSelected(book)"
         (click)="onSelect(book)">
-        <span class="badge">{{book.id}}</span> {{book.title}}
+          <span class="badge">{{book.id}}</span> {{book.title}} {{book.author}}
       </li>
     </ul>
   `,
@@ -25,7 +25,15 @@ export class BooksListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._service.getBooks().then(books => this.books = books);
+        //subscribe(
+        //    data=> {
+        //        this.books = data;
+        //
+        //    },
+        //    err => console.log(err)
+        //));
+        //
+        this._service.getBooks().subscribe(books => this.books = books);
     }
 
     isSelected(book:Book) {

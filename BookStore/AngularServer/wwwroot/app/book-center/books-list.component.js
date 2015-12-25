@@ -18,7 +18,15 @@ var BooksListComponent = (function () {
     }
     BooksListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._service.getBooks().then(function (books) { return _this.books = books; });
+        //subscribe(
+        //    data=> {
+        //        this.books = data;
+        //
+        //    },
+        //    err => console.log(err)
+        //));
+        //
+        this._service.getBooks().subscribe(function (books) { return _this.books = books; });
     };
     BooksListComponent.prototype.isSelected = function (book) {
         return book.id === this._selectedId;
@@ -28,7 +36,7 @@ var BooksListComponent = (function () {
     };
     BooksListComponent = __decorate([
         core_1.Component({
-            template: "\n    <ul>\n      <li *ngFor=\"#book of books\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\">\n        <span class=\"badge\">{{book.id}}</span> {{book.title}}\n      </li>\n    </ul>\n  ",
+            template: "\n    <ul>\n      <li *ngFor=\"#book of books\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\">\n          <span class=\"badge\">{{book.id}}</span> {{book.title}} {{book.author}}\n      </li>\n    </ul>\n  ",
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, router_1.RouteParams])
     ], BooksListComponent);

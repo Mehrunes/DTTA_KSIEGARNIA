@@ -24,7 +24,7 @@ export class BorrowListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._service.getBooks().then(books => this.books = books);
+        this._service.getBooks().subscribe(books => this.books = books);
     }
 
     isSelected(book:Book) {

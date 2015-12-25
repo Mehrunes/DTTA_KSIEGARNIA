@@ -13,6 +13,7 @@ var books_list_component_1 = require('./books-list.component');
 var book_detail_component_1 = require('./book-detail.component');
 var books_service_1 = require('./books.service');
 var addBook_1 = require('./addBook');
+var BooksDataService_1 = require("./BooksDataService");
 var SzukajComponent = (function () {
     function SzukajComponent() {
     }
@@ -20,7 +21,7 @@ var SzukajComponent = (function () {
         core_1.Component({
             template: "\n    <h2>Lista Ksiazek</h2>\n   <a [routerLink]=\"['CreateBook']\">Dodaj Ksiazke</a>\n    <router-outlet></router-outlet>\n\n\n  ",
             directives: [router_1.RouterOutlet, router_1.ROUTER_DIRECTIVES],
-            providers: [books_service_1.BooksService]
+            providers: [books_service_1.BooksService, BooksDataService_1.BooksDataService]
         }),
         router_1.RouteConfig([
             { path: '/', name: 'SzukajComponent', component: books_list_component_1.BooksListComponent, useAsDefault: true },

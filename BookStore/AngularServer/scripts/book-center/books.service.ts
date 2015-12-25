@@ -1,4 +1,6 @@
 import {Injectable} from 'angular2/core';
+import {Component} from "angular2/core";
+import {BooksDataService} from "./BooksDataService";
 
 export class Book {
 
@@ -7,16 +9,22 @@ export class Book {
                 public author:string) {
     }
 }
-
+@Component({
+    providers: [BooksDataService]
+})
 @Injectable()
 export class BooksService {
+    constructor(private _service:BooksDataService)
+    {
+    }
+
     getBooks() {
-        return crisesPromise;
+        return this._service.getBooks();
     }
 
     getBook(id:number | string) {
-        return crisesPromise
-            .then(crises => crises.filter(c => c.id === +id)[0]);
+        return this._service.getBooks()
+            .subscribe(crises => crises.filter(c => c.id === +id)[0]);
     }
 
     static nextCrisisId = 100; //after post new book, set this value
@@ -26,7 +34,7 @@ export class BooksService {
         author = author.trim();
         if (title) {
 
-            crisesPromise.then(
+            this._service.getBooks().subscribe(
                 function (crises) {
 
                     let book = new Book(crises.length + 1, title, author);
@@ -39,11 +47,3 @@ export class BooksService {
 
 }
 
-var books = [
-    new Book(1, 'Princess Held Captive', ""),
-    new Book(2, 'Dragon Burning Cities', ""),
-    new Book(3, 'Giant Asteroid Heading, For Earth', ""),
-    new Book(4, 'Release Deadline Looms', "")
-];
-
-var crisesPromise = Promise.resolve(books);

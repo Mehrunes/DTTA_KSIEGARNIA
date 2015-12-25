@@ -31,41 +31,8 @@ import {SzukajComponent} from "./book-center/books-center.component";
 ])
 export class AppComponent {
 
-    public books:Book[];
-
-
-    constructor(public http:Http, location:Location) {
+    constructor(location:Location) {
         location.go('/');
-        this.books = this.getData();
-    }
-
-    getData():any {
-        this.http.get('http://localhost:49989/api/Books')
-            //../mock/Books.json
-            //http://localhost:3000/wwwroot/index.html
-            //http://localhost:49989/api/Books
-            .map(res=> (<Response>res).json())
-            .map((jbooks: Array<any>) => {
-                let result: Array<Book> = [];
-                if (jbooks) {
-                    jbooks.forEach(jbook=> {
-                        result.push(
-                            new Book(
-                                jbook.id,
-                                jbook.title,
-                                jbook.author
-                            )
-                        )
-                    })
-                }
-                return result;
-            }).subscribe(
-            data=> {
-                this.books = data;
-
-            },
-            err => console.log(err)
-            )
     }
 }
 

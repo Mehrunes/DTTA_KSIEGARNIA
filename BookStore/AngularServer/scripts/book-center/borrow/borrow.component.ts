@@ -6,6 +6,7 @@ import {BooksService}         from './../books.service';
 import {AddBook}from './../addBook'
 import {BorrowListComponent} from "./borrow-list.component";
 import {BorrowDetailComponent} from "./borow-detail.component";
+import {BooksDataService} from "../BooksDataService";
 @Component({
     template: `
     <h2>Lista Ksiazek</h2>
@@ -15,7 +16,7 @@ import {BorrowDetailComponent} from "./borow-detail.component";
 
   `,
     directives: [RouterOutlet, ROUTER_DIRECTIVES],
-    providers: [BooksService]
+    providers: [BooksService, BooksDataService]
 })
 @RouteConfig([
     {path: '/', name: 'BorrowComponent', component: BorrowListComponent, useAsDefault: true},

@@ -8,6 +8,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
+var core_2 = require("angular2/core");
+var BooksDataService_1 = require("./BooksDataService");
 var Book = (function () {
     function Book(id, title, author) {
         this.id = id;
@@ -18,20 +20,21 @@ var Book = (function () {
 })();
 exports.Book = Book;
 var BooksService = (function () {
-    function BooksService() {
+    function BooksService(_service) {
+        this._service = _service;
     }
     BooksService.prototype.getBooks = function () {
-        return crisesPromise;
+        return this._service.getBooks();
     };
     BooksService.prototype.getBook = function (id) {
-        return crisesPromise
-            .then(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
+        return this._service.getBooks()
+            .subscribe(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
     };
     BooksService.prototype.addBook = function (title, author) {
         title = title.trim();
         author = author.trim();
         if (title) {
-            crisesPromise.then(function (crises) {
+            this._service.getBooks().subscribe(function (crises) {
                 var book = new Book(crises.length + 1, title, author);
                 crises.push(book);
             });
@@ -39,16 +42,12 @@ var BooksService = (function () {
     };
     BooksService.nextCrisisId = 100; //after post new book, set this value
     BooksService = __decorate([
+        core_2.Component({
+            providers: [BooksDataService_1.BooksDataService]
+        }),
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [BooksDataService_1.BooksDataService])
     ], BooksService);
     return BooksService;
 })();
 exports.BooksService = BooksService;
-var books = [
-    new Book(1, 'Princess Held Captive', ""),
-    new Book(2, 'Dragon Burning Cities', ""),
-    new Book(3, 'Giant Asteroid Heading, For Earth', ""),
-    new Book(4, 'Release Deadline Looms', "")
-];
-var crisesPromise = Promise.resolve(books);
