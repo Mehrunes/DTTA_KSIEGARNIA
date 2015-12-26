@@ -32,6 +32,7 @@ export class BooksService {
 
                     let book = new Book(crises.length + 1, title, author);
                     crises.push(book);
+                    console.log("save new Book to Api");
                 }
             );
         }

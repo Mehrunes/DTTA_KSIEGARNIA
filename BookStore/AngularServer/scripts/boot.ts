@@ -5,6 +5,8 @@ import { Http, HTTP_PROVIDERS, Response } from 'angular2/http';
 import {AppComponent} from './app.component'
 import {UserService}      from  './users/user.service';
 import {provide}           from 'angular2/core';
+import {enableProdMode} from "angular2/core";
+//enableProdMode();
 bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,

@@ -3,17 +3,21 @@ import {BooksService} from './books.service';
 
 import {Router, RouteParams} from 'angular2/router';
 import {Book} from "../model/book";
-
+import {SimpleSearch}from "../book-center/search/simple-search.pipe"
+import {fieldForm} from "./search/fieldForm";
 @Component({
     template: `
+     Szukaj <input type="text" [(ngModel)]="term"> <field-form #fieldForm></field-form>
     <ul>
-      <li *ngFor="#book of books"
+      <li *ngFor="#book of books|simpleSearch:fieldForm.selectedFields:term"
         [class.selected]="isSelected(book)"
         (click)="onSelect(book)">
           <span class="badge">{{book.id}}</span> {{book.title}} {{book.author}}
       </li>
     </ul>
   `,
+    pipes: [SimpleSearch],
+    directives:[fieldForm]
 })
 export class BooksListComponent implements OnInit {
     public books:Book[];
@@ -26,14 +30,6 @@ export class BooksListComponent implements OnInit {
     }
 
     ngOnInit() {
-        //subscribe(
-        //    data=> {
-        //        this.books = data;
-        //
-        //    },
-        //    err => console.log(err)
-        //));
-        //
         this._service.getBooks().subscribe(books => this.books = books);
     }
 

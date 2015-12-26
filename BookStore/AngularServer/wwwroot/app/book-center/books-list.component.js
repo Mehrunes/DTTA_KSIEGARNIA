@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var books_service_1 = require('./books.service');
 var router_1 = require('angular2/router');
+var simple_search_pipe_1 = require("../book-center/search/simple-search.pipe");
+var fieldForm_1 = require("./search/fieldForm");
 var BooksListComponent = (function () {
     function BooksListComponent(_service, _router, routeParams) {
         this._service = _service;
@@ -18,14 +20,6 @@ var BooksListComponent = (function () {
     }
     BooksListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //subscribe(
-        //    data=> {
-        //        this.books = data;
-        //
-        //    },
-        //    err => console.log(err)
-        //));
-        //
         this._service.getBooks().subscribe(function (books) { return _this.books = books; });
     };
     BooksListComponent.prototype.isSelected = function (book) {
@@ -36,7 +30,9 @@ var BooksListComponent = (function () {
     };
     BooksListComponent = __decorate([
         core_1.Component({
-            template: "\n    <ul>\n      <li *ngFor=\"#book of books\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\">\n          <span class=\"badge\">{{book.id}}</span> {{book.title}} {{book.author}}\n      </li>\n    </ul>\n  ",
+            template: "\n     Szukaj <input type=\"text\" [(ngModel)]=\"term\"> <field-form #fieldForm></field-form>\n    <ul>\n      <li *ngFor=\"#book of books|simpleSearch:fieldForm.selectedFields:term\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\">\n          <span class=\"badge\">{{book.id}}</span> {{book.title}} {{book.author}}\n      </li>\n    </ul>\n  ",
+            pipes: [simple_search_pipe_1.SimpleSearch],
+            directives: [fieldForm_1.fieldForm]
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, router_1.RouteParams])
     ], BooksListComponent);

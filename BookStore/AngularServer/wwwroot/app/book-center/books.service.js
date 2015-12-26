@@ -29,6 +29,7 @@ var BooksService = (function () {
             this._service.getBooks().subscribe(function (crises) {
                 var book = new book_1.Book(crises.length + 1, title, author);
                 crises.push(book);
+                console.log("save new Book to Api");
             });
         }
     };
