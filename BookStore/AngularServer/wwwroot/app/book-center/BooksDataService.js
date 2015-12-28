@@ -7,8 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var http_1 = require('angular2/http');
+var core_1 = require("angular2/core");
+var http_1 = require("angular2/http");
 var book_1 = require("../model/book");
 var BooksDataService = (function () {
     function BooksDataService(http) {
@@ -16,19 +16,27 @@ var BooksDataService = (function () {
     }
     BooksDataService.prototype.saveBook = function (book) {
         var _this = this;
-        var creds = "{'title':'cos','author':'ktos'}";
+        var creds = "{'Author':'Adam Mickiewicz','Title':'Pan asdasdas'}";
         var header = new http_1.Headers();
-        header.append('Content-Type', 'application/json');
-        this.http.post('http://localhost:58967/api/AddBook', creds)
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) { return console.log('SavetoApi' + book.title); }, function (err) { return _this.logError(err); }, function () { return console.log('asdas'); });
-        console.log('SavetoApi' + book);
+        header.append("Content-Type", "application/json");
+        this.http.post("http://localhost:58967/api/AddBook", creds, {
+            headers: header
+        })
+            .map(function (res) { return res.json()[0]; }).map(function (jbook) {
+            var book = new book_1.Book(jbook.id, jbook.title, jbook.author);
+            return book;
+        })
+            .subscribe(function (book) {
+            console.log(book);
+            return book;
+        }, function (err) { return _this.logError(err); }, function () { return console.log("asdas"); });
+        console.log("SavetoApi" + book);
     };
     BooksDataService.prototype.logError = function (err) {
         console.log("wrong" + err);
     };
     BooksDataService.prototype.getBooks = function () {
-        this.Obooks = this.http.get('http://localhost:58967/api/Books')
+        this.Obooks = this.http.get("http://localhost:58967/api/Books")
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];
