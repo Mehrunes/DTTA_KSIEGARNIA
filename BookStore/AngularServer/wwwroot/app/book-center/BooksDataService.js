@@ -13,6 +13,19 @@ var book_1 = require("../model/book");
 var BooksDataService = (function () {
     function BooksDataService(http) {
         this.http = http;
+    }
+    BooksDataService.prototype.saveBook = function (book) {
+        var _this = this;
+        var creds = "{'title':'cos','author':'ktos'}";
+        this.http.post('http://localhost:49989/api/AddBook', creds)
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { return console.log('SavetoApi' + book.title); }, function (err) { return _this.logError(err); }, function () { return console.log('asdas'); });
+        console.log('SavetoApi' + book);
+    };
+    BooksDataService.prototype.logError = function (err) {
+        console.log("wrong" + err);
+    };
+    BooksDataService.prototype.getBooks = function () {
         this.Obooks = this.http.get('http://localhost:49989/api/Books')
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
@@ -24,8 +37,6 @@ var BooksDataService = (function () {
             }
             return result;
         });
-    }
-    BooksDataService.prototype.getBooks = function () {
         this.Obooks.subscribe(function (books) {
             BooksDataService.books = Promise.resolve(books);
         });

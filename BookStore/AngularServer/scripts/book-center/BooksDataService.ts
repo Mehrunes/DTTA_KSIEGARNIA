@@ -10,6 +10,26 @@ export class BooksDataService {
 
     constructor(public http:Http) {
 
+    }
+
+    public  saveBook(book:Book) {
+        let creds = "{'title':'cos','author':'ktos'}";
+        this.http.post('http://localhost:49989/api/AddBook', creds)
+            .map(res=>(<Response>res).json())
+            .subscribe(
+                data =>  console.log('SavetoApi' + book.title),
+                err=>this.logError(err),
+                ()=>console.log('asdas')
+            );
+
+        console.log('SavetoApi' + book);
+    }
+
+    private logError(err):any {
+        console.log("wrong" + err);
+    }
+
+    public getBooks() {
         this.Obooks = this.http.get('http://localhost:49989/api/Books')
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
@@ -28,10 +48,8 @@ export class BooksDataService {
                     })
                 }
                 return result;
-            })
-    }
+            });
 
-    getBooks() {
         this.Obooks.subscribe(
             function (books) {
                 BooksDataService.books = Promise.resolve(books);

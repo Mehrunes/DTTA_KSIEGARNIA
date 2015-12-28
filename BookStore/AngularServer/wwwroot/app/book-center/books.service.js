@@ -23,14 +23,15 @@ var BooksService = (function () {
             .then(function (crises) { return crises.filter(function (c) { return c.id === +id; })[0]; });
     };
     BooksService.prototype.addBook = function (title, author) {
-        title = title.trim();
-        author = author.trim();
-        if (title) {
-            this._service.getBooks().subscribe(function (crises) {
-                var book = new book_1.Book(crises.length + 1, title, author);
-                crises.push(book);
-                console.log("save new Book to Api");
+        if (title && author) {
+            title = title.trim();
+            author = author.trim();
+            this._service.getBooks().subscribe(function (books) {
+                var book = new book_1.Book(books.length + 1, title, author);
+                books.push(book);
             });
+            var book = new book_1.Book(BooksService.nextCrisisId, title, author);
+            this._service.saveBook(book);
         }
     };
     BooksService.nextCrisisId = 100; //after post new book, set this value
