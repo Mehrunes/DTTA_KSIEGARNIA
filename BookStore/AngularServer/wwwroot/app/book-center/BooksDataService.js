@@ -36,7 +36,7 @@ var BooksDataService = (function () {
         console.log("wrong" + err);
     };
     BooksDataService.prototype.getBooks = function () {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get("http://localhost:49989/api/Books")
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];

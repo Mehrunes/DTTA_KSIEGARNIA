@@ -51,6 +51,7 @@ export class BooksDataService {
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
+            //http://localhost:58967/api/Books
             .map(res => (res as Response).json())
             .map((jbooks: Array<any>) => {
                 const result: Array<Book> = [];

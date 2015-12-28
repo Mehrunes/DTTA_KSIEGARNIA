@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore", "BookStore\BookStore.csproj", "{14BAE440-32E5-40DC-BAD0-4055045E833E}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AngularServer", "AngularServer\AngularServer.xproj", "{4858AB8A-C1D8-45CC-A10A-7359810E24A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80252E80-4DDF-4314-94C8-5B078A9093F9} = {80252E80-4DDF-4314-94C8-5B078A9093F9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Api", "BookStore.Api\BookStore.Api.csproj", "{80252E80-4DDF-4314-94C8-5B078A9093F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{4858AB8A-C1D8-45CC-A10A-7359810E24A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4858AB8A-C1D8-45CC-A10A-7359810E24A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4858AB8A-C1D8-45CC-A10A-7359810E24A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80252E80-4DDF-4314-94C8-5B078A9093F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80252E80-4DDF-4314-94C8-5B078A9093F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80252E80-4DDF-4314-94C8-5B078A9093F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80252E80-4DDF-4314-94C8-5B078A9093F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
