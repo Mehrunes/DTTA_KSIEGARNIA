@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AngularServer.Model;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Cors;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -40,6 +41,7 @@ namespace AngularServer
             services.AddTransient<AddDataToDataBase>();
 
 
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,8 +60,12 @@ namespace AngularServer
                     template: "{controller}/{action}/{id?}");
             });
 
+
             addDataToDataBase.EnsureData().Wait();
+         
+
         }
+   
 
         // Entry point for the application.
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);

@@ -1,5 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Http, HTTP_PROVIDERS, Response} from 'angular2/http';
+import {Http, HTTP_PROVIDERS, Response,Headers} from 'angular2/http';
 import {Observable} from "rxjs/Observable";
 import {Book} from "../model/book";
 @Injectable()
@@ -14,7 +14,11 @@ export class BooksDataService {
 
     public  saveBook(book:Book) {
         let creds = "{'title':'cos','author':'ktos'}";
-        this.http.post('http://localhost:49989/api/AddBook', creds)
+        var header = new Headers();
+        header.append('Content-Type', 'application/json');
+        this.http.post('http://localhost:58967/api/AddBook', creds, {
+            headres: header
+            })
             .map(res=>(<Response>res).json())
             .subscribe(
                 data =>  console.log('SavetoApi' + book.title),
@@ -30,7 +34,7 @@ export class BooksDataService {
     }
 
     public getBooks() {
-        this.Obooks = this.http.get('http://localhost:49989/api/Books')
+        this.Obooks = this.http.get('http://localhost:58967/api/Books')
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
