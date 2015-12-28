@@ -19,7 +19,7 @@ export class BooksService {
             .then(crises => crises.filter(c => c.id === +id)[0]);
     }
 
-    static nextCrisisId = 100; //after post new book, set this value
+    static NonExistsId = 100;
 
     addBook(title:string, author:string) {
         if (title && author) {
@@ -32,7 +32,7 @@ export class BooksService {
                     books.push(book);
                 }
             );
-            let book = new Book(BooksService.nextCrisisId, title, author);
+            let book = new Book(BooksService.NonExistsId, title, author);
             this._service.saveBook(book);
         }
     }

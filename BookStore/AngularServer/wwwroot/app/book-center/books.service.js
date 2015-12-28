@@ -30,11 +30,11 @@ var BooksService = (function () {
                 var book = new book_1.Book(books.length + 1, title, author);
                 books.push(book);
             });
-            var book = new book_1.Book(BooksService.nextCrisisId, title, author);
+            var book = new book_1.Book(BooksService.NonExistsId, title, author);
             this._service.saveBook(book);
         }
     };
-    BooksService.nextCrisisId = 100; //after post new book, set this value
+    BooksService.NonExistsId = 100;
     BooksService = __decorate([
         core_2.Component({
             providers: [BooksDataService_1.BooksDataService]

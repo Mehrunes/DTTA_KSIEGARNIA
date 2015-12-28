@@ -16,27 +16,24 @@ var BooksDataService = (function () {
     }
     BooksDataService.prototype.saveBook = function (book) {
         var _this = this;
-        var creds = "{'Author':'Adam Mickiewicz','Title':'Pan asdasdas'}";
+        var jbook = JSON.stringify(book); //wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
-        this.http.post("http://localhost:58967/api/AddBook", creds, {
+        this.http.post("http://localhost:58967/api/AddBook", jbook, {
             headers: header
         })
             .map(function (res) { return res.json()[0]; }).map(function (jbook) {
-            var book = new book_1.Book(jbook.id, jbook.title, jbook.author);
-            return book;
+            return new book_1.Book(jbook.id, jbook.title, jbook.author);
         })
             .subscribe(function (book) {
-            console.log(book);
             return book;
-        }, function (err) { return _this.logError(err); }, function () { return console.log("asdas"); });
-        console.log("SavetoApi" + book);
+        }, function (err) { return _this.logError(err); }, function () { return console.log(book + " Saved to API"); });
     };
     BooksDataService.prototype.logError = function (err) {
         console.log("wrong" + err);
     };
     BooksDataService.prototype.getBooks = function () {
-        this.Obooks = this.http.get("http://localhost:49989/api/Books")
+        this.Obooks = this.http.get("../mock/Books.json")
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];

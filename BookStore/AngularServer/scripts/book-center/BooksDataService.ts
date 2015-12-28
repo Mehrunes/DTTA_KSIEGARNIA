@@ -14,32 +14,26 @@ export class BooksDataService {
     }
 
     saveBook(book: Book) {
-        const creds = "{'Author':'Adam Mickiewicz','Title':'Pan asdasdas'}";
+        let jbook = JSON.stringify(book); //wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
         const header = new Headers();
         header.append("Content-Type", "application/json");
-        this.http.post("http://localhost:58967/api/AddBook", creds, {
+        this.http.post("http://localhost:58967/api/AddBook", jbook, {
                 headers: header
             })
             .map(res => (res as Response).json()[0]
             ).map(function(jbook) {
-                const book = new Book(
+                return new Book(
                     jbook.id,
                     jbook.title,
                     jbook.author
                 );
-                return book;
             })
             .subscribe(function(book) {
-
-                    console.log(book);
                     return book;
-
                 },
                 err => this.logError(err),
-                () => console.log("asdas")
+                () => console.log(`${book} Saved to API`)
             );
-
-        console.log(`SavetoApi${book}`);
     }
 
     private logError(err): any {
@@ -47,7 +41,7 @@ export class BooksDataService {
     }
 
     getBooks() {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get("../mock/Books.json")
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
