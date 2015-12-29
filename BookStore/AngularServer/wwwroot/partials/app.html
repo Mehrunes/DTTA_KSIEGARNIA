@@ -1,5 +1,14 @@
-<h1 class="title">Witamy na stronie biblioteki</h1>
-<a [routerLink]="['Szukaj']">Zarzadzaj ksiazkami (admin) </a>
+<div class="row">
+    <div class="col-md-8"><h1 class="title">Witamy na stronie biblioteki</h1></div>
+    <div class="col-md-4">
+        <login-form title="{{user}}" #loginForm (isLogin)="listenOnLogin($event)">
+            <button class="btn btn-default" type="submit" (click)="loginForm.setLoggedIn('admin')">zaloguj jako admin</button>
+            <button class="btn btn-default" type="submit" (click)="loginForm.setLoggedIn('gosc')">zaloguj jako uztkonik gosc</button>
+        </login-form>
+    </div>
+</div>
+
+<a [hidden]="!admin" [routerLink]="['Szukaj']">Zarzadzaj ksiazkami (admin) </a>
 <a [routerLink]="['Borrow']">>Wyszukaj Ksiazkę i wypożycz</a>
-<a [routerLink]="['Users']">Zarzadzaj użytkownikiem</a>
+<a [hidden]="!admin" [routerLink]="['Users']">Zarzadzaj użytkownikiem</a>
 <router-outlet></router-outlet>

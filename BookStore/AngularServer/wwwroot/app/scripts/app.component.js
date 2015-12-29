@@ -14,27 +14,34 @@ var user_list_component_1 = require('./users/user-list.component');
 var user_detail_component_1 = require('./users/user-detail.component');
 var borrow_component_1 = require("./book-center/borrow/borrow.component");
 var books_center_component_1 = require("./book-center/books-center.component");
+var loginForm_1 = require("./isLogin/loginForm");
 var AppComponent = (function () {
     function AppComponent(location) {
-        location.go('/');
+        this.admin = false;
+        this.user = 'niezalogowany';
+        location.go('/books/');
     }
+    AppComponent.prototype.listenOnLogin = function (user) {
+        console.log('Zalogowal sie ' + user);
+        this.admin = ('admin' == user);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'partials/app.html',
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES, loginForm_1.LoginForm]
         }),
         router_1.RouteConfig([
             {
                 path: '/...',
                 name: 'Szukaj',
-                component: books_center_component_1.SzukajComponent,
-                useAsDefault: true
+                component: books_center_component_1.SzukajComponent
             },
             {
                 path: '/books/...',
                 name: 'Borrow',
-                component: borrow_component_1.BorrowComponent
+                component: borrow_component_1.BorrowComponent,
+                useAsDefault: true
             },
             { path: '/users', name: 'Users', component: user_list_component_1.UserListComponent },
             { path: '/user/:id', name: 'UserDetail', component: user_detail_component_1.UserDetailComponent },
