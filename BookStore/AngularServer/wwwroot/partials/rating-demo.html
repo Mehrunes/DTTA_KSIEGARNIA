@@ -1,0 +1,22 @@
+
+
+<h4>Oceń</h4>
+{{rate}}
+<rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+        (on-hover)="hoveringOver($event)" (on-leave)="resetStar($event)"
+        (click)="wyslijGwiazdki($event)"
+        [titles]="['1','2','3','4','5','6','7','8','9']"></rating>
+<span class="label"
+      [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+      [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}">%</span>
+
+
+
+<button type="button" class="btn btn-sm btn-danger" (click)="rate = 0"
+        [disabled]="isReadonly">Clear
+</button>
+<button type="button" class="btn btn-sm btn-primary"
+        (click)="isReadonly = ! isReadonly">Toggle Readonly
+</button>
+<hr/>
+

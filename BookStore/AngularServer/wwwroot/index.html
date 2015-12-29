@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <base href="/wwwroot/index.html">
     <!--<base href="/">-->
-    <title>Angular2 Aspnet5 Seed</title>
+    <title>Witamy na stronie biblioteki</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <script src="lib/es6-shim.js"></script>
     <script src="lib/angular2-polyfills.js"></script>
     <script src="lib/system.js"></script>
@@ -13,7 +14,8 @@
         System.config({
             defaultJSExtensions: true,
             map: {
-             'rxjs': 'lib/rxjs'
+                'rxjs': 'lib/rxjs',
+                'ng2-bootstrap': '/node_modules/ng2-bootstrap/'
             }
         });
     </script>
@@ -21,12 +23,12 @@
     <script src="lib/http.dev.js"></script>
     <script src="lib/router.dev.js"></script>
     <script>
-        System.import('app/boot')
-          .then(null, console.error.bind(console));
+        System.import('app/scripts/boot')
+                .then(null, console.error.bind(console));
 
     </script>
 </head>
 <body>
-    <my-app>Loading...</my-app>
+<my-app>Loading...</my-app>
 </body>
 </html>

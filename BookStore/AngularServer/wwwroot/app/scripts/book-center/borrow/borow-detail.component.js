@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var books_service_1 = require('./../books.service');
 var router_1 = require('angular2/router');
+var RatingDemo_1 = require("./RatingDemo");
 var BorrowDetailComponent = (function () {
     function BorrowDetailComponent(_service, _router, _routeParams) {
         this._service = _service;
@@ -35,8 +36,9 @@ var BorrowDetailComponent = (function () {
     };
     BorrowDetailComponent = __decorate([
         core_1.Component({
-            template: "\n  <div *ngIf=\"book\">\n    <div>\n      <label>Id: </label>{{book.id}}</div>\n    <div>\n      <label>Name: </label>\n      {{book.title}}\n    </div>\n <button (click)=\"gotoBooks()\">Canclel</button>\n    <br><br><br>\n\nliczba dost\u0119pnych 4/4 <br>\n    <button>dodaj do koszyka wypozyczen</button>\n  </div>\n  ",
-            styles: ['input {width: 20em}']
+            template: "\n  <div *ngIf=\"book\">\n    <div>\n      <label>Id: </label>{{book.id}}</div>\n    <div>\n      <label>Name: </label>\n      {{book.title}}\n    </div>\n <button (click)=\"gotoBooks()\">Canclel</button>\n    <br><br><br>\n\n  <rating-demo></rating-demo>\nliczba dost\u0119pnych 4/4 <br>\n    <button>dodaj do koszyka wypozyczen</button>\n  </div>\n  ",
+            styles: ['input {width: 20em}'],
+            directives: [RatingDemo_1.RatingDemo]
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, router_1.RouteParams])
     ], BorrowDetailComponent);

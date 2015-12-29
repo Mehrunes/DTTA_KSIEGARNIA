@@ -3,6 +3,7 @@ import {BooksService} from './../books.service';
 import {RouteParams, Router} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
 import {Book} from "../../model/book";
+import {RatingDemo} from "./RatingDemo";
 
 
 @Component({
@@ -17,11 +18,13 @@ import {Book} from "../../model/book";
  <button (click)="gotoBooks()">Canclel</button>
     <br><br><br>
 
+  <rating-demo></rating-demo>
 liczba dostępnych 4/4 <br>
     <button>dodaj do koszyka wypozyczen</button>
   </div>
   `,
-    styles: ['input {width: 20em}']
+    styles: ['input {width: 20em}'],
+    directives: [RatingDemo]
 })
 export class BorrowDetailComponent implements OnInit {
 
