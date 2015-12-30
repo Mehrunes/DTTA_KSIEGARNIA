@@ -15,6 +15,7 @@ var user_detail_component_1 = require('./users/user-detail.component');
 var borrow_component_1 = require("./book-center/borrow/borrow.component");
 var books_center_component_1 = require("./book-center/books-center.component");
 var loginForm_1 = require("./isLogin/loginForm");
+var Checkout_1 = require("./cart/Checkout");
 var AppComponent = (function () {
     function AppComponent(location) {
         this.admin = false;
@@ -45,6 +46,7 @@ var AppComponent = (function () {
             },
             { path: '/users', name: 'Users', component: user_list_component_1.UserListComponent },
             { path: '/user/:id', name: 'UserDetail', component: user_detail_component_1.UserDetailComponent },
+            { path: '/chart', name: 'Checkout', component: Checkout_1.Checkout }
         ]), 
         __metadata('design:paramtypes', [router_1.Location])
     ], AppComponent);

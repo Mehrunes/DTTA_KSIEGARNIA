@@ -7,6 +7,7 @@ import {AddBook}from './../addBook'
 import {BorrowListComponent} from "./borrow-list.component";
 import {BorrowDetailComponent} from "./borow-detail.component";
 import {BooksDataService} from "../BooksDataService";
+import {Checkout} from "../../cart/Checkout";
 @Component({
     template: `
     <h2>Lista Ksiazek</h2>

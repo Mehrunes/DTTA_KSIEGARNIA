@@ -8,6 +8,7 @@ import {UserDetailComponent}   from './users/user-detail.component';
 import {BorrowComponent} from "./book-center/borrow/borrow.component";
 import {SzukajComponent} from "./book-center/books-center.component";
 import {LoginForm} from "./isLogin/loginForm";
+import {Checkout} from "./cart/Checkout";
 
 @Component({
     selector: 'my-app',
@@ -29,6 +30,7 @@ import {LoginForm} from "./isLogin/loginForm";
     },
     {path: '/users', name: 'Users', component: UserListComponent},
     {path: '/user/:id', name: 'UserDetail', component: UserDetailComponent},
+    {path: '/chart', name: 'Checkout', component: Checkout}
 
 ])
 export class AppComponent {

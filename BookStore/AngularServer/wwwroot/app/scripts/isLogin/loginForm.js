@@ -11,19 +11,15 @@ var core_1 = require('angular2/core');
 var core_2 = require("angular2/core");
 var core_3 = require("angular2/core");
 var router_1 = require("angular2/src/router/router");
+var chart_component_1 = require("../cart/chart.component");
 var LoginForm = (function () {
     function LoginForm(_router) {
         this._router = _router;
         this.visible = false;
         this.isLogin = new core_2.EventEmitter();
     }
-    //@HostListener('isLogin', ['$event'])
-    //private ObslozZdarzenieZalogowania(user) {
-    //
-    //    console.log('zalogowal sie uzytkownik '+user);
-    //}
     LoginForm.prototype.setLoggedIn = function (user) {
-        this.title = user;
+        this.userLoggedIn = user;
         this.isLogin.emit(user);
         this._router.navigate(['Borrow']);
         this.toggle();
@@ -34,7 +30,7 @@ var LoginForm = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], LoginForm.prototype, "title", void 0);
+    ], LoginForm.prototype, "userLoggedIn", void 0);
     __decorate([
         core_3.Output(), 
         __metadata('design:type', core_2.EventEmitter)
@@ -42,7 +38,8 @@ var LoginForm = (function () {
     LoginForm = __decorate([
         core_1.Component({
             selector: 'login-form',
-            template: "<div class = \"panel panel-default\">\n<span class=\"{{ visible ? 'glyphicon glyphicon-plus' : 'glyphicon glyphicon-minus' }}\"\n      (click)=\"toggle()\">Witaj {{title}}</span>\n    <div [hidden]=\"!visible\">\n        <ng-content></ng-content>\n    </div>\n</div>\n    "
+            template: "<div class=\"panel panel-default\">\n    <div class=\"row\">\n        <div class=\"col-md-8\">\n<span class=\"{{ visible ? 'glyphicon glyphicon-plus' : 'glyphicon glyphicon-minus' }}\"\n      (click)=\"toggle()\">Witaj {{userLoggedIn}}</span>\n            <div [hidden]=\"!visible\">\n                <ng-content></ng-content>\n            </div>\n        </div>\n        <div class=\"col-md-4\">\n            <chart></chart>\n        </div>\n    </div>\n</div>",
+            directives: [chart_component_1.Cart]
         }), 
         __metadata('design:paramtypes', [router_1.Router])
     ], LoginForm);
