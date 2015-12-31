@@ -42,7 +42,7 @@ export class BooksDataService {
     }
 
     getBooks() {
-        this.Obooks = this.http.get("../mock/Books.json")
+        this.Obooks = this.http.get("http://localhost:58967/api/Books")
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
