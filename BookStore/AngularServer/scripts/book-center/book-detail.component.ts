@@ -7,6 +7,9 @@ import {Book} from "../model/book";
 import {GenreService} from "./genre/genre.service";
 import {GenreDataService} from "./genre/GenreDataService";
 import {Genre} from "../model/genre";
+import {UsersDataService} from "../users/UsersDataService";
+import {UserService} from "../users/user.service";
+import {User} from "../model/user";
 
 
 @Component({
@@ -35,27 +38,38 @@ liczba dostępnych 4/4 <br>
 usun ksiazke
     wybierz urzytkownika który zwraca ksiazkę <br>
 
-    <button>zwroc ksiazke</button>
+    <select [(ngModel)]="whoGiveBookBack">
+        <option *ngFor="#user of users">
+            {{user.name}}
+        </option>
+
+    </select>
+
+    <button (click)="giveBookBack()">{{whoGiveBookBack}} zwraca ksiazke</button>
   </div>
   `,
     styles: ['input {width: 20em}'],
-    providers: [GenreService, GenreDataService]
+    providers: [GenreService, GenreDataService, UserService, UsersDataService]
 })
 export class BookDetailComponent implements OnInit {
 
+    private whoGiveBookBack:User;
     public book:Book;
     public editName:string;
     public genres:Genre[];
+    private users:User[];
 
     constructor(private _service:BooksService,
                 private _router:Router,
                 private _routeParams:RouteParams,
-                private _serviceGenreService:GenreService) {
+                private _serviceGenreService:GenreService,
+                private _usersFromApiService:UserService) {
     }
 
     ngOnInit() {
         let id = +this._routeParams.get('id');
         this._serviceGenreService.getOGenres().subscribe(genres =>this.genres = genres);
+        this._usersFromApiService.getOUsers().subscribe(users=>this.users = users);
         this._service.getBook(id).then(book => {
             if (book) {
                 this.editName = book.title;
@@ -65,6 +79,10 @@ export class BookDetailComponent implements OnInit {
             }
         });
 
+    }
+
+    giveBookBack() {
+        console.log('zapisz w api ze ' + this.whoGiveBookBack + ' zwraca ' + this.book.title);
     }
 
     cancel() {

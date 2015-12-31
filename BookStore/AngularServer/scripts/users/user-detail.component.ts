@@ -1,6 +1,8 @@
 import {Component,  OnInit}  from 'angular2/core';
-import {User, UserService}   from './user.service';
+import { UserService}   from './user.service';
 import {RouteParams, Router} from 'angular2/router';
+import {User} from "../model/user";
+import {UsersDataService} from "./UsersDataService";
 
 @Component({
     template: `
@@ -16,6 +18,7 @@ import {RouteParams, Router} from 'angular2/router';
     <button (click)="gotoUsers()">Back</button>
   </div>
   `,
+    providers:[UserService,UsersDataService]
 })
 export class UserDetailComponent implements OnInit {
     public user:User;

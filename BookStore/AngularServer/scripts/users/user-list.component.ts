@@ -1,6 +1,8 @@
 import {Component, OnInit}   from 'angular2/core';
-import {User, UserService}   from './user.service';
+import {UserService}   from './user.service';
 import {Router}              from 'angular2/router';
+import {User} from "../model/user";
+import {UsersDataService} from "./UsersDataService";
 
 @Component({
     template: `
@@ -12,7 +14,8 @@ import {Router}              from 'angular2/router';
       </li>
 
     </ul>
-  `
+  `,
+    providers: [UserService, UsersDataService]
 })
 export class UserListComponent implements OnInit {
     public users:User[];

@@ -1,12 +1,17 @@
 import {Injectable} from 'angular2/core';
+import {User} from "../model/user";
+import {UsersDataService} from "./UsersDataService";
+import {Component} from "angular2/core";
+import {Observable} from "rxjs/Observable";
 
-export class User {
-    constructor(public id:number, public name:string) {
-    }
-}
-
+@Component({
+    providers: [UsersDataService]
+})
 @Injectable()
 export class UserService {
+    constructor(private _service:UsersDataService) {
+    }
+
     getUsers() {
         return usersPromise;
     }
@@ -14,6 +19,12 @@ export class UserService {
     getUser(id:number | string) {
         return usersPromise
             .then(users => users.filter(h => h.id === +id)[0]);
+    }
+
+
+
+    getOUsers():Observable<User[]> {
+        return this._service.getOUsers();
     }
 }
 

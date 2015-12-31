@@ -8,16 +8,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
-var User = (function () {
-    function User(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-    return User;
-})();
-exports.User = User;
+var user_1 = require("../model/user");
+var UsersDataService_1 = require("./UsersDataService");
+var core_2 = require("angular2/core");
 var UserService = (function () {
-    function UserService() {
+    function UserService(_service) {
+        this._service = _service;
     }
     UserService.prototype.getUsers = function () {
         return usersPromise;
@@ -26,19 +22,25 @@ var UserService = (function () {
         return usersPromise
             .then(function (users) { return users.filter(function (h) { return h.id === +id; })[0]; });
     };
+    UserService.prototype.getOUsers = function () {
+        return this._service.getOUsers();
+    };
     UserService = __decorate([
+        core_2.Component({
+            providers: [UsersDataService_1.UsersDataService]
+        }),
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [UsersDataService_1.UsersDataService])
     ], UserService);
     return UserService;
 })();
 exports.UserService = UserService;
 var USERS = [
-    new User(11, 'Mr. Nice'),
-    new User(12, 'Narco'),
-    new User(13, 'Bombasto'),
-    new User(14, 'Celeritas'),
-    new User(15, 'Magneta'),
-    new User(16, 'RubberMan')
+    new user_1.User(11, 'Mr. Nice'),
+    new user_1.User(12, 'Narco'),
+    new user_1.User(13, 'Bombasto'),
+    new user_1.User(14, 'Celeritas'),
+    new user_1.User(15, 'Magneta'),
+    new user_1.User(16, 'RubberMan')
 ];
 var usersPromise = Promise.resolve(USERS);

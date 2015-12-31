@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var user_service_1 = require('./user.service');
 var router_1 = require('angular2/router');
+var UsersDataService_1 = require("./UsersDataService");
 var UserListComponent = (function () {
     function UserListComponent(_router, _service) {
         this._router = _router;
@@ -24,7 +25,8 @@ var UserListComponent = (function () {
     };
     UserListComponent = __decorate([
         core_1.Component({
-            template: "\n    <h2>Users</h2>\n    <ul>\n      <li *ngFor=\"#user of users\"\n        (click)=\"onSelect(user)\">\n        <span class=\"badge\">{{user.id}}</span> {{user.name}}\n      </li>\n\n    </ul>\n  "
+            template: "\n    <h2>Users</h2>\n    <ul>\n      <li *ngFor=\"#user of users\"\n        (click)=\"onSelect(user)\">\n        <span class=\"badge\">{{user.id}}</span> {{user.name}}\n      </li>\n\n    </ul>\n  ",
+            providers: [user_service_1.UserService, UsersDataService_1.UsersDataService]
         }), 
         __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService])
     ], UserListComponent);
