@@ -18,7 +18,7 @@ export class cartServiceProvider {
     }
 
     destroy() {
-        //this.books.unshift(this.books);
+        //this.books.unshift(this.books); //TODO: usuwanie koszyka po zapisie do api
     }
 
     addBook(book:Book) {

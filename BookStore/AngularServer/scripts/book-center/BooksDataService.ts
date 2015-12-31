@@ -14,7 +14,7 @@ export class BooksDataService {
     }
 
     saveBook(book: Book) {
-        let jbook = JSON.stringify(book); //wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
+        let jbook = JSON.stringify(book); //TODO: wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
         const header = new Headers();
         header.append("Content-Type", "application/json");
         this.http.post("http://localhost:58967/api/AddBook", jbook, {
@@ -25,7 +25,8 @@ export class BooksDataService {
                 return new Book(
                     jbook.id,
                     jbook.title,
-                    jbook.author
+                    jbook.author,
+                    jbook.genre
                 );
             })
             .subscribe(function(book) {
@@ -41,7 +42,7 @@ export class BooksDataService {
     }
 
     getBooks() {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get("../mock/Books.json")
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
@@ -55,7 +56,8 @@ export class BooksDataService {
                             new Book(
                                 jbook.id,
                                 jbook.title,
-                                jbook.author
+                                jbook.author,
+                                jbook.genre
                             ));
                     });
                 }

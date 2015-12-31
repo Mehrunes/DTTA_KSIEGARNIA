@@ -7,28 +7,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var GenreDataService_1 = require("./GenreDataService");
 var core_1 = require("angular2/core");
-var cartServiceProvider = (function () {
-    function cartServiceProvider() {
-        this.books = BOOKS;
+var core_2 = require("angular2/core");
+var GenreService = (function () {
+    function GenreService(_service) {
+        this._service = _service;
     }
-    cartServiceProvider.prototype.getBooks = function () {
-        return this.books;
+    GenreService.prototype.getOGenres = function () {
+        return this._service.getOGenres();
     };
-    cartServiceProvider.prototype.destroy = function () {
-        //this.books.unshift(this.books); //TODO: usuwanie koszyka po zapisie do api
-    };
-    cartServiceProvider.prototype.addBook = function (book) {
-        this.books.push(book);
-    };
-    cartServiceProvider.prototype.isEmptyCart = function () {
-        return (this.books.length == 0);
-    };
-    cartServiceProvider = __decorate([
+    GenreService = __decorate([
+        core_2.Component({
+            providers: [GenreDataService_1.GenreDataService]
+        }),
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], cartServiceProvider);
-    return cartServiceProvider;
+        __metadata('design:paramtypes', [GenreDataService_1.GenreDataService])
+    ], GenreService);
+    return GenreService;
 })();
-exports.cartServiceProvider = cartServiceProvider;
-var BOOKS = new Array();
+exports.GenreService = GenreService;
