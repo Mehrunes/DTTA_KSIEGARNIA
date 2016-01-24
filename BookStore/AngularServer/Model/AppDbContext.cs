@@ -15,7 +15,7 @@ namespace AngularServer.Model
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server = (localdb)\MSSQLLocalDB; Database = BookStorea; Trusted_Connection = True; MultipleActiveResultSets = True; ");
+                @"Server = (localdb)\MSSQLLocalDB; Database = BookStor; Trusted_Connection = True; MultipleActiveResultSets = True; ");
             base.OnConfiguring(optionsBuilder);
         }
     }

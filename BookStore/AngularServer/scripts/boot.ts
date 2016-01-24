@@ -6,7 +6,7 @@ import {AppComponent} from './app.component'
 import {UserService}      from  './users/user.service';
 import {provide}           from 'angular2/core';
 import {enableProdMode} from "angular2/core";
-//enableProdMode();
+enableProdMode();
 bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,

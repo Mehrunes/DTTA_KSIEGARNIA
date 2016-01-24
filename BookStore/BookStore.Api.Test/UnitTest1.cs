@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BookStore.Api.Tests
+namespace BookStore.Api.Test
 {
     [TestClass]
     public class UnitTest1

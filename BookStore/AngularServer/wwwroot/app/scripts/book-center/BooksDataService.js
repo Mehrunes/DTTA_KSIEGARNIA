@@ -16,7 +16,7 @@ var BooksDataService = (function () {
     }
     BooksDataService.prototype.saveBook = function (book) {
         var _this = this;
-        var jbook = JSON.stringify(book); //TODO: wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
+        var jbook = "{'Author':'" + book.author + "','Title':'" + book.title + "'}";
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
         this.http.post("http://localhost:58967/api/AddBook", jbook, {
@@ -25,9 +25,10 @@ var BooksDataService = (function () {
             .map(function (res) { return res.json()[0]; }).map(function (jbook) {
             return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.genre);
         })
-            .subscribe(function (book) {
-            return book;
-        }, function (err) { return _this.logError(err); }, function () { return console.log(book + " Saved to API"); });
+            .subscribe(function (book2) {
+            console.log(book2);
+            return book2;
+        }, function (err) { return _this.logError(err); });
     };
     BooksDataService.prototype.logError = function (err) {
         console.log("wrong" + err);

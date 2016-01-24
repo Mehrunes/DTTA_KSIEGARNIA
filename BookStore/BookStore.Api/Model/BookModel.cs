@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BookStore.Api.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BookStore.Model
+namespace BookStore.Models
 {
-    public class Book : ModelBase
+    public class BookModel
     {
       
-       
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
 

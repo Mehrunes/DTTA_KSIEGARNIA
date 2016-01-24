@@ -228,10 +228,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\addBookTemplate.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\addBookTemplate.cs" />
+    <Compile Include="Model\BookModel.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BookService.cs" />
+    <Compile Include="Service\IBookService.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Storage\InMemoryRepository.cs" />
+    <Compile Include="Storage\IRepository.cs" />
+    <Compile Include="Storage\Repository.cs" />
+    <Compile Include="Storage\UamTTAContext.cs" />
+    <Compile Include="Tools\EnumerableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

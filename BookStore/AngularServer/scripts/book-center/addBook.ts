@@ -11,12 +11,14 @@ import {CanDeactivate, ComponentInstruction} from 'angular2/router';
     <input type="text" [(ngModel)]="author">{{author}}
     <button type="submit" >addd</button>
 </form>
+{{succes}}
 `
 })
 export class AddBook {
 
     private title;
     private author;
+    private succes;
 
     constructor(private _service:BooksService,
                 private _router:Router) {
@@ -24,6 +26,7 @@ export class AddBook {
 
     onSubmit() {
         this._service.addBook(this.title, this.author);
-        this._router.navigate(['SzukajComponent']);
+        this.succes = 'dodano';
+//        this._router.navigate(['SzukajComponent']);
     }
 }

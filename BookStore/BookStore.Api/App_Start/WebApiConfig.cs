@@ -7,6 +7,8 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Autofac;
 using Autofac.Integration.WebApi;
+using BookStore.Api.Service;
+using BookStore.Storage;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
@@ -32,16 +34,17 @@ namespace BookStore.Api
 
             var container = builder.Build();
 
+          
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         private static void ConfigureContainer(ContainerBuilder builder)
         {
-//            builder.Register(_ => new UamTTAContext("UamTTAConnectionString")).As<UamTTAContext>();
-//            builder.RegisterType<BudgetFactory>().As<IBudgetFactory>();
-//            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
-//            builder.RegisterType<BudgetService>().As<IBudgetService>();
-//            builder.RegisterType<AccountService>().As<IAccountService>();
+            builder.Register(_ => new UamTTAContext("UamTTAConnectionString")).As<UamTTAContext>();
+          
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+            builder.RegisterType<BookService>().As<IBudgetService>();
+         
         }
     }
 }

@@ -22,7 +22,6 @@ namespace AngualrServer.Controllers
         public IEnumerable<Book> Get()
         {
             return _context.Books
-                //.Where(x => x.Username == User.Identity.Name)
                 .ToList();
         }
         [HttpPost]
@@ -41,6 +40,19 @@ namespace AngualrServer.Controllers
             };
 
         }
+//
+//        var cos = new Book
+//        {
+//
+//            Title = parameter.Title,
+//            Author = parameter.Author
+//        },
+//
+//
+//            _context.
+//Books = cos;
+
+
 
 
 //                // GET: api/books

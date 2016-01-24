@@ -14,7 +14,8 @@ export class BooksDataService {
     }
 
     saveBook(book: Book) {
-        let jbook = JSON.stringify(book); //TODO: wysyłamy do API jsona nie mając pewności że dane Id nie istnieje tutaj powinna być jakaś inna implementacja
+
+        let jbook = "{'Author':'" + book.author + "','Title':'" + book.title+"'}";
         const header = new Headers();
         header.append("Content-Type", "application/json");
         this.http.post("http://localhost:58967/api/AddBook", jbook, {
@@ -29,11 +30,11 @@ export class BooksDataService {
                     jbook.genre
                 );
             })
-            .subscribe(function(book) {
-                    return book;
+            .subscribe(function (book2) {
+                    console.log(book2);
+                    return book2;
                 },
-                err => this.logError(err),
-                () => console.log(`${book} Saved to API`)
+                err => this.logError(err)
             );
     }
 
