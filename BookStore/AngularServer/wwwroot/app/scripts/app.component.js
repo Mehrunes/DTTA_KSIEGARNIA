@@ -16,6 +16,7 @@ var borrow_component_1 = require("./book-center/borrow/borrow.component");
 var books_center_component_1 = require("./book-center/books-center.component");
 var loginForm_1 = require("./isLogin/loginForm");
 var Checkout_1 = require("./cart/Checkout");
+var jwtAuthHttp_1 = require("./isLogin/jwtAuthHttp");
 var AppComponent = (function () {
     function AppComponent(location) {
         this.admin = false;
@@ -30,7 +31,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: 'partials/app.html',
-            directives: [router_1.ROUTER_DIRECTIVES, loginForm_1.LoginForm]
+            directives: [router_1.ROUTER_DIRECTIVES, loginForm_1.LoginForm, jwtAuthHttp_1.jwtAuthHttp]
         }),
         router_1.RouteConfig([
             {
