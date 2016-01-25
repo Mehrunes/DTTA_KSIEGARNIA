@@ -19,30 +19,34 @@ namespace BookStore.Api.Service
             _bookRepository = bookRepository;
         }
 
-        public Book GetBudgetById(int budgetId)
-        {
-            return _bookRepository.FindById(budgetId);
-        }
-
-        public Book UpdateBudget(Book budget)
-        {
-            return _bookRepository.Persist(budget);
-        }
+//        public Book GetBudgetById(int budgetId)
+//        {
+//            return _bookRepository.FindById(budgetId);
+//        }
+//
+//        public Book UpdateBudget(Book budget)
+//        {
+//            return _bookRepository.Persist(budget);
+//        }
 
         public IEnumerable<Book> GetAllBooks()
         {
             return _bookRepository.GetAll();
         }
 
-        public Book AddAccountToBudget(int budgetId, int accountId)
-        {
-            Book budget = _bookRepository.FindById(budgetId);
-            if (budget == null)
-                throw new ArgumentException("Book id is invalid!", nameof(budgetId));
+        //        public Book AddBook(int bookId)
+        //        {
+        //            Book book = _bookRepository.FindById(bookId);
+        //            if (book == null)
+        //                throw new ArgumentException("Book id is invalid!", nameof(bookId));
+        //
+        //            return _bookRepository.Persist(book);
+        //        }
 
-            return _bookRepository.Persist(budget);
+        public Book CreateBook(Book book)
+        {
+            return _bookRepository.Persist(book);
         }
 
-      
     }
 }

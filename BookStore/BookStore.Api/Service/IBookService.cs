@@ -9,6 +9,7 @@ namespace BookStore.Api.Service
 
 
         IEnumerable<Book> GetAllBooks();
-
+        Book CreateBook(Book book);
+       
     }
 }

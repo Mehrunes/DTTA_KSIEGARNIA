@@ -46,7 +46,8 @@ namespace BookStore.Api.Controllers
                 Title = parameter.Title,
                 Author = parameter.Author
             };
-            _templateRepository.Persist(template);
+            _bookService.CreateBook(template);
+            
 
 
             return CreatedAtRoute("GetBookById", new { id = template.Id }, template);
