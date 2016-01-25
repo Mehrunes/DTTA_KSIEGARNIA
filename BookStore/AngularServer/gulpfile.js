@@ -23,14 +23,11 @@ var libs = [
 gulp.task('fonts', function () {
     return gulp.src(paths.npm + 'bootstrap/dist/fonts/*').pipe(gulp.dest('wwwroot/fonts/'));
 });
-gulp.task('angular2-jwt', function () {
-    return gulp.src(paths.npm + 'angular2-jwt/**/*.js').pipe(gulp.dest(paths.lib + 'angular2-jwt/'));
-});
 gulp.task('rxjs', function () {
     return gulp.src(paths.npm + 'rxjs/**/*.js').pipe(gulp.dest(paths.lib + 'rxjs/'));
 });
 
-gulp.task('libs', ['rxjs','fonts','angular2-jwt'], function () {
+gulp.task('libs', ['rxjs','fonts'], function () {
     return gulp.src(libs).pipe(gulp.dest(paths.lib));
 });
 

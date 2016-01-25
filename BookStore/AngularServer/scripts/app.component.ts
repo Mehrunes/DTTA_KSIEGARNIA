@@ -9,12 +9,11 @@ import {BorrowComponent} from "./book-center/borrow/borrow.component";
 import {SzukajComponent} from "./book-center/books-center.component";
 import {LoginForm} from "./isLogin/loginForm";
 import {Checkout} from "./cart/Checkout";
-import {jwtAuthHttp} from "./isLogin/jwtAuthHttp";
 
 @Component({
     selector: 'my-app',
     templateUrl: 'partials/app.html',
-    directives: [ROUTER_DIRECTIVES, LoginForm,jwtAuthHttp]
+    directives: [ROUTER_DIRECTIVES, LoginForm]
 })
 @RouteConfig([
 
