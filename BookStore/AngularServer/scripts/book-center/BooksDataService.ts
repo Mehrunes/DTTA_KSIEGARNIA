@@ -38,12 +38,37 @@ export class BooksDataService {
             );
     }
 
+    checkBook(book: Book) {
+
+        let jbook = "{'Check':'" + book.checkK +"'}";
+        const header = new Headers();
+        header.append("Content-Type", "application/json");
+        this.http.post("http://localhost:58967/api/CheckBook/"+ book.id, jbook, {
+                headers: header
+            })
+            .map(res => (res as Response).json()[0]
+            ).map(function(jbook) {
+                return new Book(
+                    jbook.id,
+                    jbook.title,
+                    jbook.author,
+                    jbook.genre
+                );
+            })
+            .subscribe(function (book2) {
+                    console.log(book2);
+                    return book2;
+                },
+                err => this.logError(err)
+            );
+    }
+
     private logError(err): any {
         console.log(`wrong${err}`);
     }
 
     getBooks() {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get(".http://localhost:58967/api/Books")
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books

@@ -11,10 +11,12 @@ var core_1 = require('angular2/core');
 var chart_component_1 = require("./chart.component");
 var cart_service_provider_1 = require("./cart-service.provider");
 var router_1 = require("angular2/src/router/router");
+var BooksDataService_1 = require("../book-center/BooksDataService");
 var Checkout = (function () {
-    function Checkout(_cartServiceProvider, _router) {
+    function Checkout(_cartServiceProvider, _router, _bookDataService) {
         this._cartServiceProvider = _cartServiceProvider;
         this._router = _router;
+        this._bookDataService = _bookDataService;
     }
     Checkout.prototype.howManyBook = function () {
         return this.howManyBooks = this._cartServiceProvider.getBooks().length;
@@ -22,6 +24,11 @@ var Checkout = (function () {
     Checkout.prototype.saveToApi = function () {
         console.log('zapisz do api Ksiazki');
         console.log(this._cartServiceProvider.getBooks());
+        var self = this;
+        this._cartServiceProvider.getBooks().forEach(function (book) {
+            self._bookDataService.checkBook(book);
+            console.log(book);
+        });
         this._router.navigate(['Borrow']);
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
     };
@@ -29,9 +36,9 @@ var Checkout = (function () {
         core_1.Component({
             template: "<br><br>\n\n\n\n<button class=\"btn btn-default btn-lg\" (click)=\"saveToApi()\">\nW twoim koszyku sa {{ howManyBook() }} przedmioty\nkliknij aby potwierdzic zamowienie <br>\n   <span class=\"glyphicon glyphicon-shopping-cart \" aria-hidden=\"true\"></span>\n   <chart ukryj=\"tak\"></chart>\n\n</button>\n\n\n",
             directives: [chart_component_1.Cart],
-            providers: [cart_service_provider_1.cartServiceProvider]
+            providers: [cart_service_provider_1.cartServiceProvider, BooksDataService_1.BooksDataService]
         }), 
-        __metadata('design:paramtypes', [cart_service_provider_1.cartServiceProvider, router_1.Router])
+        __metadata('design:paramtypes', [cart_service_provider_1.cartServiceProvider, router_1.Router, BooksDataService_1.BooksDataService])
     ], Checkout);
     return Checkout;
 })();

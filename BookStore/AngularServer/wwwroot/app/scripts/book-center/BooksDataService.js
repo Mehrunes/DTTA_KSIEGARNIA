@@ -30,11 +30,27 @@ var BooksDataService = (function () {
             return book2;
         }, function (err) { return _this.logError(err); });
     };
+    BooksDataService.prototype.checkBook = function (book) {
+        var _this = this;
+        var jbook = "{'Check':'" + book.checkK + "'}";
+        var header = new http_1.Headers();
+        header.append("Content-Type", "application/json");
+        this.http.post("http://localhost:58967/api/CheckBook/" + book.id, jbook, {
+            headers: header
+        })
+            .map(function (res) { return res.json()[0]; }).map(function (jbook) {
+            return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.genre);
+        })
+            .subscribe(function (book2) {
+            console.log(book2);
+            return book2;
+        }, function (err) { return _this.logError(err); });
+    };
     BooksDataService.prototype.logError = function (err) {
         console.log("wrong" + err);
     };
     BooksDataService.prototype.getBooks = function () {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get(".http://localhost:58967/api/Books")
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];
