@@ -10,5 +10,6 @@ namespace AngularServer.Model
 
         [JsonProperty(PropertyName = "Author")]
         public string Author { get; set; }
+
     }
 }

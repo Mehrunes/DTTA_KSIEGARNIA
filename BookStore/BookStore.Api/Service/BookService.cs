@@ -19,15 +19,15 @@ namespace BookStore.Api.Service
             _bookRepository = bookRepository;
         }
 
-//        public Book GetBudgetById(int budgetId)
-//        {
-//            return _bookRepository.FindById(budgetId);
-//        }
+        public Book GetBookById(int budgetId)
+        {
+            return _bookRepository.FindById(budgetId);
+        }
 //
-//        public Book UpdateBudget(Book budget)
-//        {
-//            return _bookRepository.Persist(budget);
-//        }
+        public Book UpdateBook(Book budget)
+        {
+            return _bookRepository.Persist(budget);
+        }
 
         public IEnumerable<Book> GetAllBooks()
         {

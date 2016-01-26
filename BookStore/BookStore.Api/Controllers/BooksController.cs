@@ -44,7 +44,7 @@ namespace BookStore.Api.Controllers
             var template = new Book
             {
                 Title = parameter.Title,
-                Author = parameter.Author
+                Author = parameter.Author,
             };
             _bookService.CreateBook(template);
             
@@ -52,6 +52,21 @@ namespace BookStore.Api.Controllers
 
             return CreatedAtRoute("GetBookById", new { id = template.Id }, template);
         }
+
+        [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
+        [Route("api/CheckBook/{id}")]
+        [HttpPost]
+        public IHttpActionResult Books2(checkBookTemplate parameter,int id)
+        {
+            
+            var book = _bookService.GetBookById(id);
+            book.Check = parameter.Check;
+            _bookService.UpdateBook(book);
+
+
+            return CreatedAtRoute("GetBookById", new { id = book.Id }, book);
+        }
+
 
         [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
         [Route("api/Book/{id}", Name = "GetBookById")]
@@ -63,7 +78,8 @@ namespace BookStore.Api.Controllers
             {
                 Id = id,
                 Title = template.Title,
-                Author = template.Author
+                Author = template.Author,
+                Check = template.Check
             };
         }
     }

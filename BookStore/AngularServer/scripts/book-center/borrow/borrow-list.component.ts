@@ -9,7 +9,7 @@ import {Book} from "../../model/book";
       <li *ngFor="#book of books"
         [class.selected]="isSelected(book)"
         (click)="onSelect(book)">
-        <span class="badge">{{book.id}}</span> {{book.title}}
+        <span class="badge">{{book.id}}</span> {{book.title}}  {{book.author}}
       </li>
     </ul>
   `,
