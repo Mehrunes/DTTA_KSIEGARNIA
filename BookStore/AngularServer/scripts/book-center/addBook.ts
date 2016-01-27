@@ -1,7 +1,7 @@
-import {Component, OnInit,Inject} from 'angular2/core';
-import { BooksService} from './books.service';
-import {RouteParams, Router} from 'angular2/router';
-import {CanDeactivate, ComponentInstruction} from 'angular2/router';
+import {Component, OnInit, Inject} from "angular2/core";
+import { BooksService} from "./books.service";
+import {RouteParams, Router} from "angular2/router";
+import {CanDeactivate, ComponentInstruction} from "angular2/router";
 
 @Component({
     providers: [BooksService],
@@ -20,13 +20,13 @@ export class AddBook {
     private author;
     private succes;
 
-    constructor(private _service:BooksService,
-                private _router:Router) {
+    constructor(private _service: BooksService,
+        private _router: Router) {
     }
 
     onSubmit() {
         this._service.addBook(this.title, this.author);
-        this.succes = 'dodano';
+        this.succes = "dodano";
 //        this._router.navigate(['SzukajComponent']);
     }
 }
