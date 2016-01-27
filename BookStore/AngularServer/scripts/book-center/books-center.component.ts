@@ -4,7 +4,7 @@ import {RouteConfig, RouterOutlet,ROUTER_DIRECTIVES} from 'angular2/router';
 import {BooksListComponent}   from './books-list.component';
 import {BookDetailComponent} from './book-detail.component';
 import {BooksService}         from './books.service';
-import {AddBook}from './addBook';
+import {AddBook} from './addBook';
 import {BooksDataService} from "./BooksDataService";
 @Component({
     template: `

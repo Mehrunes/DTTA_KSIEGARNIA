@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var books_service_1 = require('./books.service');
-var router_1 = require('angular2/router');
+var core_1 = require("angular2/core");
+var books_service_1 = require("./books.service");
+var router_1 = require("angular2/router");
 var AddBook = (function () {
     function AddBook(_service, _router) {
         this._service = _service;
@@ -17,13 +17,13 @@ var AddBook = (function () {
     }
     AddBook.prototype.onSubmit = function () {
         this._service.addBook(this.title, this.author);
-        this.succes = 'dodano';
+        this.succes = "dodano";
         //        this._router.navigate(['SzukajComponent']);
     };
     AddBook = __decorate([
         core_1.Component({
             providers: [books_service_1.BooksService],
-            template: "\n<form (ngSubmit)=\"onSubmit()\">\n  Tytu\uFFFD:  <input type=\"text\" [(ngModel)]=\"title\">{{title}}<br>\n    Autor: <input type=\"text\" [(ngModel)]=\"author\">{{author}}\n    <button type=\"submit\" >addd</button>\n</form>\n{{succes}}\n"
+            template: "\n<form (ngSubmit)=\"onSubmit()\">\n  Tytu\u0142:  <input type=\"text\" [(ngModel)]=\"title\">{{title}}<br>\n    Autor: <input type=\"text\" [(ngModel)]=\"author\">{{author}}\n    <button type=\"submit\" >addd</button>\n</form>\n{{succes}}\n"
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router])
     ], AddBook);

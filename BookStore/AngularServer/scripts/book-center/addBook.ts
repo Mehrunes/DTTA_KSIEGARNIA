@@ -7,7 +7,7 @@ import {CanDeactivate, ComponentInstruction} from "angular2/router";
     providers: [BooksService],
     template: `
 <form (ngSubmit)="onSubmit()">
-  Tytu≥:  <input type="text" [(ngModel)]="title">{{title}}<br>
+  Tytu≈Ç:  <input type="text" [(ngModel)]="title">{{title}}<br>
     Autor: <input type="text" [(ngModel)]="author">{{author}}
     <button type="submit" >addd</button>
 </form>
@@ -20,8 +20,8 @@ export class AddBook {
     private author;
     private succes;
 
-    constructor(private _service: BooksService,
-        private _router: Router) {
+    constructor(private _service:BooksService,
+                private _router:Router) {
     }
 
     onSubmit() {
