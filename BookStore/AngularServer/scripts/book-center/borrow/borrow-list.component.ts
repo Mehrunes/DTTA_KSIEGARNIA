@@ -8,9 +8,10 @@ import {Book} from "../../model/book";
     <ul>
       <li *ngFor="#book of books"
         [class.selected]="isSelected(book)"
-        (click)="onSelect(book)">{{book.checkK}}
-<div  [hidden]="!book.checkK">
-        <span class="badge">{{book.id}}</span> {{book.title}}  {{book.author}}</div>
+        (click)="onSelect(book)"
+        [hidden]="book.check">
+
+        <span class="badge">{{book.id}}</span> {{book.title}}  {{book.author}}
       </li>
     </ul>
   `,

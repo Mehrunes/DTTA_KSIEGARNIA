@@ -28,7 +28,7 @@ var BorrowListComponent = (function () {
     };
     BorrowListComponent = __decorate([
         core_1.Component({
-            template: "\n    <ul>\n      <li *ngFor=\"#book of books\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\">{{book.checkK}}\n<div  [hidden]=\"!book.checkK\">\n        <span class=\"badge\">{{book.id}}</span> {{book.title}}  {{book.author}}</div>\n      </li>\n    </ul>\n  ",
+            template: "\n    <ul>\n      <li *ngFor=\"#book of books\"\n        [class.selected]=\"isSelected(book)\"\n        (click)=\"onSelect(book)\"\n        [hidden]=\"book.check\">\n\n        <span class=\"badge\">{{book.id}}</span> {{book.title}}  {{book.author}}\n      </li>\n    </ul>\n  ",
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, router_1.RouteParams])
     ], BorrowListComponent);

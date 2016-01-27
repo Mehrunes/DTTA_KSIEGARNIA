@@ -23,7 +23,7 @@ var AddBook = (function () {
     AddBook = __decorate([
         core_1.Component({
             providers: [books_service_1.BooksService],
-            template: "\n<form (ngSubmit)=\"onSubmit()\">\n    <input type=\"text\" [(ngModel)]=\"title\">{{title}}\n    <input type=\"text\" [(ngModel)]=\"author\">{{author}}\n    <button type=\"submit\" >addd</button>\n</form>\n{{succes}}\n"
+            template: "\n<form (ngSubmit)=\"onSubmit()\">\n  Tytu\uFFFD:  <input type=\"text\" [(ngModel)]=\"title\">{{title}}<br>\n    Autor: <input type=\"text\" [(ngModel)]=\"author\">{{author}}\n    <button type=\"submit\" >addd</button>\n</form>\n{{succes}}\n"
         }), 
         __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router])
     ], AddBook);

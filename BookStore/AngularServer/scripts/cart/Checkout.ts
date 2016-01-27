@@ -13,7 +13,9 @@ import {BooksDataService} from "../book-center/BooksDataService";
 W twoim koszyku sa {{ howManyBook() }} przedmioty
 kliknij aby potwierdzic zamowienie <br>
    <span class="glyphicon glyphicon-shopping-cart " aria-hidden="true"></span>
-   <chart ukryj="tak"></chart>
+   <ul>
+        <li *ngFor="#book of _cartServiceProvider.books">{{book.title}}</li>
+    </ul>
 
 </button>
 
@@ -35,13 +37,11 @@ export class Checkout {
     }
 
     saveToApi() {
-        console.log('zapisz do api Ksiazki');
-        console.log(this._cartServiceProvider.getBooks());
         let self =this;
         this._cartServiceProvider.getBooks().forEach(function (book) {
-            book.checkK = true;
+            book.check = true;
             self._bookDataService.checkBook(book);
-            console.log(book);
+
 
         });
 

@@ -16,7 +16,10 @@ var cartServiceProvider = (function () {
         return this.books;
     };
     cartServiceProvider.prototype.destroy = function () {
-        //this.books.unshift(this.books); //TODO: usuwanie koszyka po zapisie do api
+        this.books.forEach(function (book) {
+            BOOKS.pop();
+        });
+        BOOKS.pop();
     };
     cartServiceProvider.prototype.addBook = function (book) {
         this.books.push(book);

@@ -22,20 +22,17 @@ var Checkout = (function () {
         return this.howManyBooks = this._cartServiceProvider.getBooks().length;
     };
     Checkout.prototype.saveToApi = function () {
-        console.log('zapisz do api Ksiazki');
-        console.log(this._cartServiceProvider.getBooks());
         var self = this;
         this._cartServiceProvider.getBooks().forEach(function (book) {
-            book.checkK = true;
+            book.check = true;
             self._bookDataService.checkBook(book);
-            console.log(book);
         });
         this._router.navigate(['Borrow']);
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
     };
     Checkout = __decorate([
         core_1.Component({
-            template: "<br><br>\n\n\n\n<button class=\"btn btn-default btn-lg\" (click)=\"saveToApi()\">\nW twoim koszyku sa {{ howManyBook() }} przedmioty\nkliknij aby potwierdzic zamowienie <br>\n   <span class=\"glyphicon glyphicon-shopping-cart \" aria-hidden=\"true\"></span>\n   <chart ukryj=\"tak\"></chart>\n\n</button>\n\n\n",
+            template: "<br><br>\n\n\n\n<button class=\"btn btn-default btn-lg\" (click)=\"saveToApi()\">\nW twoim koszyku sa {{ howManyBook() }} przedmioty\nkliknij aby potwierdzic zamowienie <br>\n   <span class=\"glyphicon glyphicon-shopping-cart \" aria-hidden=\"true\"></span>\n   <ul>\n        <li *ngFor=\"#book of _cartServiceProvider.books\">{{book.title}}</li>\n    </ul>\n\n</button>\n\n\n",
             directives: [chart_component_1.Cart],
             providers: [cart_service_provider_1.cartServiceProvider, BooksDataService_1.BooksDataService]
         }), 

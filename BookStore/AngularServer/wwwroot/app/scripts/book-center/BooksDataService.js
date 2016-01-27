@@ -23,7 +23,7 @@ var BooksDataService = (function () {
             headers: header
         })
             .map(function (res) { return res.json()[0]; }).map(function (jbook) {
-            return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.checkK, jbook.genre);
+            return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.check, jbook.genre);
         })
             .subscribe(function (book2) {
             console.log(book2);
@@ -32,14 +32,14 @@ var BooksDataService = (function () {
     };
     BooksDataService.prototype.checkBook = function (book) {
         var _this = this;
-        var jbook = "{'Check':'" + book.checkK + "'}";
+        var jbook = "{'Check':'" + book.check + "'}";
         var header = new http_1.Headers();
         header.append("Content-Type", "application/json");
         this.http.post("http://localhost:58967/api/CheckBook/" + book.id, jbook, {
             headers: header
         })
             .map(function (res) { return res.json(); }).map(function (jbook) {
-            return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.checkK, jbook.genre);
+            return new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.check, jbook.genre);
         })
             .subscribe(function (book2) {
             console.log(book2);
@@ -50,13 +50,13 @@ var BooksDataService = (function () {
         console.log("wrong" + err);
     };
     BooksDataService.prototype.getBooks = function () {
-        this.Obooks = this.http.get("http://localhost:58967/api/Books")
+        this.Obooks = this.http.get("../mock/Books.json")
             .map(function (res) { return res.json(); })
             .map(function (jbooks) {
             var result = [];
             if (jbooks) {
                 jbooks.forEach(function (jbook) {
-                    result.push(new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.checkK, jbook.genre));
+                    result.push(new book_1.Book(jbook.id, jbook.title, jbook.author, jbook.check, jbook.genre));
                 });
             }
             return result;

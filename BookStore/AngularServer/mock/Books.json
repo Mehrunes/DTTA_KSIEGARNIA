@@ -3,18 +3,21 @@
     "id": 1,
     "title": "Pan Tadeusz",
     "author": "Adam Mickiewicz",
-    "genre": "romans"
+    "genre": "romans",
+    "check": false
   },
   {
     "id": 2,
     "title": "Krzyzacy",
     "author": "Henryk Sienkiewicz",
-    "genre": "powiesc historycznas"
+    "genre": "powiesc historycznas",
+    "check": false
   },
   {
     "id": 3,
     "title": "W pustyni i w puszczy",
     "author": "Henryk Sienkiewicz ",
-    "genre": "przygodowy"
+    "genre": "przygodowy",
+    "check": false
   }
 ]

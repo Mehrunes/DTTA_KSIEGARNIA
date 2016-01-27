@@ -27,7 +27,7 @@ export class BooksDataService {
                     jbook.id,
                     jbook.title,
                     jbook.author,
-                    jbook.checkK,
+                    jbook.check,
                     jbook.genre
                 );
             })
@@ -41,7 +41,7 @@ export class BooksDataService {
 
     checkBook(book: Book) {
 
-        let jbook = "{'Check':'" + book.checkK +"'}";
+        let jbook = "{'Check':'" + book.check +"'}";
         const header = new Headers();
         header.append("Content-Type", "application/json");
         this.http.post("http://localhost:58967/api/CheckBook/"+ book.id, jbook, {
@@ -53,11 +53,11 @@ export class BooksDataService {
                     jbook.id,
                     jbook.title,
                     jbook.author,
-                    jbook.checkK,
+                    jbook.check,
                     jbook.genre
                 );
             })
-            .subscribe(function (book2) {
+            .subscribe(book2=> {
                     console.log(book2);
                     return book2;
                 },
@@ -85,7 +85,7 @@ export class BooksDataService {
                                 jbook.id,
                                 jbook.title,
                                 jbook.author,
-                                jbook.checkK,
+                                jbook.check,
                                 jbook.genre
                             ));
                     });

@@ -17,12 +17,6 @@ var Cart = (function () {
         this._router = _router;
         this.visible = false;
     }
-    Cart.prototype.hide = function () {
-        if (this.ukryj == "tak") {
-            this.visible = true;
-        }
-        return this.ukryj == "tak";
-    };
     Cart.prototype.goToCheckout = function () {
         this._router.navigate(['Checkout']);
         this.toggle();
@@ -40,7 +34,7 @@ var Cart = (function () {
     Cart = __decorate([
         core_1.Component({
             selector: 'chart',
-            template: "<div [hidden]=\"hide()\">\n    <span class=\"{{ visible ? 'glyphicon glyphicon-plus' : 'glyphicon glyphicon-minus' }}\"\n          (click)=\"toggle()\">Pokaz koszyk</span>\n</div>\n<div [hidden]=\"!visible\">\n    <ul>\n        <li *ngFor=\"#book of _service.books\">{{book.title}}</li>\n    </ul>\n\n    <button [hidden]=\"isEmptyChart()||hide()\" (click)=\"goToCheckout()\">zapisz ze chcesz odwiedzic biblioteke</button>\n</div>\n            ",
+            template: "\n    <span class=\"{{ visible ? 'glyphicon glyphicon-plus' : 'glyphicon glyphicon-minus' }}\"\n          (click)=\"toggle()\">Pokaz koszyk</span>\n\n<div [hidden]=\"!visible\">\n    <ul>\n        <li *ngFor=\"#book of _service.books\">{{book.title}}</li>\n    </ul>\n\n    <button [hidden]=\"isEmptyChart()\" (click)=\"goToCheckout()\">zapisz ze chcesz odwiedzic biblioteke</button>\n</div>\n            ",
             providers: [cart_service_provider_1.cartServiceProvider]
         }), 
         __metadata('design:paramtypes', [cart_service_provider_1.cartServiceProvider, router_1.Router])
