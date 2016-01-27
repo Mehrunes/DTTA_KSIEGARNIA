@@ -36,6 +36,7 @@ namespace BookStore.Api
 
           
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            EnableCrossSiteRequests(config);
         }
 
         private static void ConfigureContainer(ContainerBuilder builder)
@@ -45,6 +46,14 @@ namespace BookStore.Api
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
             builder.RegisterType<BookService>().As<IBudgetService>();
          
+        }
+        private static void EnableCrossSiteRequests(HttpConfiguration config)
+        {
+            var cors = new EnableCorsAttribute(
+                origins: "*",
+                headers: "*",
+                methods: "*");
+            config.EnableCors(cors);
         }
     }
 }

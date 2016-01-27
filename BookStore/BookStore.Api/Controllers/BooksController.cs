@@ -24,7 +24,7 @@ namespace BookStore.Api.Controllers
 
         }
 
-        [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
+   
         [Route("api/Books")]
         public IEnumerable<BookModel> GetBooks()
         {
@@ -38,7 +38,6 @@ namespace BookStore.Api.Controllers
         }
 
 
-        [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
         [Route("api/AddBook/")]
         [HttpPost]
         public IHttpActionResult Books(addBookTemplate parameter)
@@ -55,7 +54,7 @@ namespace BookStore.Api.Controllers
             return CreatedAtRoute("GetBookById", new { id = template.Id }, template);
         }
 
-        [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
+      
         [Route("api/CheckBook/{id}")]
         [HttpPost]
         public IHttpActionResult Books2(checkBookTemplate parameter,int id)
@@ -70,7 +69,6 @@ namespace BookStore.Api.Controllers
         }
 
 
-        [EnableCors(origins: "http://localhost:49989", headers: "*", methods: "*")]
         [Route("api/Book/{id}", Name = "GetBookById")]
         [HttpGet]
         public BookModel GetBook(int id)
