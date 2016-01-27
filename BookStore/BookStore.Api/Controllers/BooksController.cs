@@ -32,7 +32,8 @@ namespace BookStore.Api.Controllers
             {
                 Id = x.Id.Value,
                 Author = x.Author,
-                Title = x.Title
+                Title = x.Title,
+                Check = x.Check
             });
         }
 
