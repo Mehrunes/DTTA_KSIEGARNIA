@@ -2,6 +2,7 @@
 using BookStore.Api.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,11 @@ namespace BookStore.Api.Service.Tests
             var book = new Book();
 
             _sut.CreateBook(book);
+         
 
             A.CallTo(() => _repository.Persist(book))
                 .MustHaveHappened();
+            Debug.WriteLine(("books " + book));
         }
 
 
@@ -44,6 +47,8 @@ namespace BookStore.Api.Service.Tests
         public void Get_All_Books_Test()
         {
             _sut.GetAllBooks();
+                        Debug.WriteLine(("books "+_sut.GetAllBooks()));
+           
             A.CallTo(()=>_repository.GetAll()).MustHaveHappened();
         }
 

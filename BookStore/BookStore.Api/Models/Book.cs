@@ -16,5 +16,11 @@ namespace BookStore.Model
         public string Author { get; set; }
         public bool Check { get; set; }
 
+
+        public override string ToString()
+        {
+            return Author + ' '+ Title;
+        }
+
     }
 }

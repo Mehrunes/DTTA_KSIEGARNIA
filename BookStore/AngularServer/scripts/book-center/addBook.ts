@@ -7,8 +7,8 @@ import {CanDeactivate, ComponentInstruction} from 'angular2/router';
     providers: [BooksService],
     template: `
 <form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="title">{{title}}
-    <input type="text" [(ngModel)]="author">{{author}}
+  Tytu³:  <input type="text" [(ngModel)]="title">{{title}}<br>
+    Autor: <input type="text" [(ngModel)]="author">{{author}}
     <button type="submit" >addd</button>
 </form>
 {{succes}}
