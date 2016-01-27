@@ -19,14 +19,14 @@ namespace BookStore.Api.Service
             _bookRepository = bookRepository;
         }
 
-        public Book GetBookById(int budgetId)
+        public Book GetBookById(int bookId)
         {
-            return _bookRepository.FindById(budgetId);
+            return _bookRepository.FindById(bookId);
         }
 //
-        public Book UpdateBook(Book budget)
+        public Book UpdateBook(Book book)
         {
-            return _bookRepository.Persist(budget);
+            return _bookRepository.Persist(book);
         }
 
         public IEnumerable<Book> GetAllBooks()

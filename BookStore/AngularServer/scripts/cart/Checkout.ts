@@ -38,7 +38,8 @@ export class Checkout {
         console.log('zapisz do api Ksiazki');
         console.log(this._cartServiceProvider.getBooks());
         let self =this;
-        this._cartServiceProvider.getBooks().forEach(function(book){
+        this._cartServiceProvider.getBooks().forEach(function (book) {
+            book.checkK = true;
             self._bookDataService.checkBook(book);
             console.log(book);
 

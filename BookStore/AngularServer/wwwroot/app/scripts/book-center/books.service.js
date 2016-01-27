@@ -27,10 +27,10 @@ var BooksService = (function () {
             title = title.trim();
             author = author.trim();
             this._service.getBooks().subscribe(function (books) {
-                var book = new book_1.Book(books.length + 1, title, author, 1);
+                var book = new book_1.Book(books.length + 1, title, author, false, 1);
                 books.push(book);
             });
-            var book = new book_1.Book(BooksService.NonExistsId, title, author, 1);
+            var book = new book_1.Book(BooksService.NonExistsId, title, author, false, 1);
             this._service.saveBook(book);
         }
     };

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AngularServer.Model;
+using BookStore.Api.Model;
 using BookStore.Api.Service;
 using BookStore.Model;
 using BookStore.Models;

@@ -27,6 +27,7 @@ export class BooksDataService {
                     jbook.id,
                     jbook.title,
                     jbook.author,
+                    jbook.checkK,
                     jbook.genre
                 );
             })
@@ -46,12 +47,13 @@ export class BooksDataService {
         this.http.post("http://localhost:58967/api/CheckBook/"+ book.id, jbook, {
                 headers: header
             })
-            .map(res => (res as Response).json()[0]
+            .map(res => (res as Response).json()
             ).map(function(jbook) {
                 return new Book(
                     jbook.id,
                     jbook.title,
                     jbook.author,
+                    jbook.checkK,
                     jbook.genre
                 );
             })
@@ -68,7 +70,7 @@ export class BooksDataService {
     }
 
     getBooks() {
-        this.Obooks = this.http.get(".http://localhost:58967/api/Books")
+        this.Obooks = this.http.get("http://localhost:58967/api/Books")
             //../mock/Books.json
             //http://localhost:3000/wwwroot/index.html
             //http://localhost:49989/api/Books
@@ -83,6 +85,7 @@ export class BooksDataService {
                                 jbook.id,
                                 jbook.title,
                                 jbook.author,
+                                jbook.checkK,
                                 jbook.genre
                             ));
                     });

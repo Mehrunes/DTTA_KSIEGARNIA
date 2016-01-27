@@ -10,7 +10,7 @@ namespace BookStore.Api.Service
 
         IEnumerable<Book> GetAllBooks();
         Book CreateBook(Book book);
-         Book GetBookById(int budgetId);
-        Book UpdateBook(Book budget);
+         Book GetBookById(int bookId);
+        Book UpdateBook(Book book);
     }
 }

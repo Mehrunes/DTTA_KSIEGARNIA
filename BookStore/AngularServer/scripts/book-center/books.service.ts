@@ -28,11 +28,11 @@ export class BooksService {
 
             this._service.getBooks().subscribe(
                 function (books) {
-                    let book = new Book(books.length + 1, title, author,1);
+                    let book = new Book(books.length + 1, title, author,false,1);
                     books.push(book);
                 }
             );
-            let book = new Book(BooksService.NonExistsId, title, author,1);
+            let book = new Book(BooksService.NonExistsId, title, author,false,1);
             this._service.saveBook(book);
         }
     }

@@ -26,6 +26,7 @@ var Checkout = (function () {
         console.log(this._cartServiceProvider.getBooks());
         var self = this;
         this._cartServiceProvider.getBooks().forEach(function (book) {
+            book.checkK = true;
             self._bookDataService.checkBook(book);
             console.log(book);
         });

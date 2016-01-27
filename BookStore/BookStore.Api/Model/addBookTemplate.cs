@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AngularServer.Model
+namespace BookStore.Api.Model
 {
     public class addBookTemplate
     {
