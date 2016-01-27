@@ -4,7 +4,7 @@
     "title": "Pan Tadeusz",
     "author": "Adam Mickiewicz",
     "genre": "romans",
-    "check": false
+    "check": true
   },
   {
     "id": 2,

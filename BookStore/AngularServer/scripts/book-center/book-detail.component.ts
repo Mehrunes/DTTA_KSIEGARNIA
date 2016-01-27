@@ -49,7 +49,7 @@ usun ksiazke
   </div>
   `,
     styles: ['input {width: 20em}'],
-    providers: [GenreService, GenreDataService, UserService, UsersDataService]
+    providers: [GenreService, GenreDataService, UserService, UsersDataService,BooksDataService]
 })
 export class BookDetailComponent implements OnInit {
 
@@ -63,7 +63,9 @@ export class BookDetailComponent implements OnInit {
                 private _router:Router,
                 private _routeParams:RouteParams,
                 private _serviceGenreService:GenreService,
-                private _usersFromApiService:UserService) {
+                private _usersFromApiService:UserService,
+                private _bookDataService:BooksDataService
+    ) {
     }
 
     ngOnInit() {
@@ -82,7 +84,11 @@ export class BookDetailComponent implements OnInit {
     }
 
     giveBookBack() {
-        console.log('zapisz w api ze ' + this.whoGiveBookBack + ' zwraca ' + this.book.title);
+
+        this.book.check=false;
+        this._bookDataService.checkBook(this.book);
+        alert("oddano");
+        this._router.navigate(['Borrow']);
     }
 
     cancel() {

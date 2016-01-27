@@ -27,8 +27,9 @@ var Checkout = (function () {
             book.check = true;
             self._bookDataService.checkBook(book);
         });
-        this._router.navigate(['Borrow']);
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
+        alert("wypozyczono ");
+        this._router.navigate(['Borrow']);
     };
     Checkout = __decorate([
         core_1.Component({

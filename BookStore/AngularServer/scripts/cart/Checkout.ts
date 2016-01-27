@@ -45,8 +45,9 @@ export class Checkout {
 
         });
 
-        this._router.navigate(['Borrow']);
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
+        alert("wypozyczono ");
+        this._router.navigate(['Borrow']);
     }
 
 }
