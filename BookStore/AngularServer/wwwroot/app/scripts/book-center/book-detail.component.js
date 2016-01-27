@@ -15,6 +15,7 @@ var genre_service_1 = require("./genre/genre.service");
 var GenreDataService_1 = require("./genre/GenreDataService");
 var UsersDataService_1 = require("../users/UsersDataService");
 var user_service_1 = require("../users/user.service");
+var router_2 = require("angular2/src/router/router");
 var BookDetailComponent = (function () {
     function BookDetailComponent(_service, _router, _routeParams, _serviceGenreService, _usersFromApiService, _bookDataService) {
         this._service = _service;
@@ -43,7 +44,8 @@ var BookDetailComponent = (function () {
         this.book.check = false;
         this._bookDataService.checkBook(this.book);
         alert("oddano");
-        this._router.navigate(['Borrow']);
+        //this._router.navigate(['Borrow']);
+        location.reload();
     };
     BookDetailComponent.prototype.cancel = function () {
         this.editName = this.book.title; // TODO: sprawdzic czy gatunek sie zapisuje czy nie po kliknieciu na cancel
@@ -65,7 +67,7 @@ var BookDetailComponent = (function () {
             styles: ['input {width: 20em}'],
             providers: [genre_service_1.GenreService, GenreDataService_1.GenreDataService, user_service_1.UserService, UsersDataService_1.UsersDataService, BooksDataService_1.BooksDataService]
         }), 
-        __metadata('design:paramtypes', [books_service_1.BooksService, router_1.Router, router_1.RouteParams, genre_service_1.GenreService, user_service_1.UserService, BooksDataService_1.BooksDataService])
+        __metadata('design:paramtypes', [books_service_1.BooksService, router_2.Router, router_1.RouteParams, genre_service_1.GenreService, user_service_1.UserService, BooksDataService_1.BooksDataService])
     ], BookDetailComponent);
     return BookDetailComponent;
 })();

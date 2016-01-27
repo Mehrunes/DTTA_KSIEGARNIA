@@ -47,7 +47,7 @@ export class Checkout {
 
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
         alert("wypozyczono ");
-        this._router.navigate(['Borrow']);
+        this._router.navigate(['Szukaj']);
     }
 
 }

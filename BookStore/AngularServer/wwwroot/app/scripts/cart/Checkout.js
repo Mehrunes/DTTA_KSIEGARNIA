@@ -29,7 +29,7 @@ var Checkout = (function () {
         });
         this._cartServiceProvider.destroy(); //TODO: Zaimplementowac zniszeczenie koszyka
         alert("wypozyczono ");
-        this._router.navigate(['Borrow']);
+        this._router.navigate(['Szukaj']);
     };
     Checkout = __decorate([
         core_1.Component({

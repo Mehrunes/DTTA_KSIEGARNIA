@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 import { BooksService} from './books.service';
-import {RouteParams, Router} from 'angular2/router';
+import {RouteParams} from 'angular2/router';
 import {CanDeactivate, ComponentInstruction} from 'angular2/router';
 import {BooksDataService} from "./BooksDataService";
 import {Book} from "../model/book";
@@ -10,6 +10,7 @@ import {Genre} from "../model/genre";
 import {UsersDataService} from "../users/UsersDataService";
 import {UserService} from "../users/user.service";
 import {User} from "../model/user";
+import {Router} from "angular2/src/router/router";
 
 
 @Component({
@@ -88,7 +89,8 @@ export class BookDetailComponent implements OnInit {
         this.book.check=false;
         this._bookDataService.checkBook(this.book);
         alert("oddano");
-        this._router.navigate(['Borrow']);
+        //this._router.navigate(['Borrow']);
+        location.reload();
     }
 
     cancel() {
